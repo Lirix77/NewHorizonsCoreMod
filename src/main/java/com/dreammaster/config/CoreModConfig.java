@@ -14,17 +14,14 @@ public class CoreModConfig extends ConfigManager {
     }
 
     public boolean OreDictItems_Enabled;
-    public static boolean ModLoginMessage_Enabled;
     public boolean gtnhPauseMenuButtons;
     public static String ModPackVersion = Refstrings.MODPACKPACK_VERSION;
 
     public boolean ModHazardousItems_Enabled;
     public boolean ModDebugVersionDisplay_Enabled;
-    public boolean ModCustomToolTips_Enabled;
     public boolean ModCustomFuels_Enabled;
     public boolean ModCustomDrops_Enabled;
     public boolean ModAdminErrorLogs_Enabled;
-    public boolean ModBabyChest_Enabled;
     public boolean ForestryStampsAndChunkLoaderCoinsEnabled;
     public boolean ForestryStampsAndChunkLoaderCoinsServerEnabled;
 
@@ -56,15 +53,12 @@ public class CoreModConfig extends ConfigManager {
 
     @Override
     protected void PreInit() {
-        ModLoginMessage_Enabled = true;
         gtnhPauseMenuButtons = true;
         ModDebugVersionDisplay_Enabled = true;
         ModHazardousItems_Enabled = false;
-        ModCustomToolTips_Enabled = false;
         ModCustomFuels_Enabled = false;
         ModCustomDrops_Enabled = false;
         ModAdminErrorLogs_Enabled = true;
-        ModBabyChest_Enabled = true;
         OreDictItems_Enabled = true;
         ForestryStampsAndChunkLoaderCoinsEnabled = true;
         ForestryStampsAndChunkLoaderCoinsServerEnabled = false;
@@ -94,11 +88,6 @@ public class CoreModConfig extends ConfigManager {
                 "Modules",
                 OreDictItems_Enabled,
                 "Set to false to prevent the OreDict register for SpaceStones and SpaceDusts");
-        ModLoginMessage_Enabled = _mainConfig.getBoolean(
-                "LoginMessage",
-                "Modules",
-                ModLoginMessage_Enabled,
-                "Set to true to show login message with modpack version");
         gtnhPauseMenuButtons = _mainConfig.getBoolean(
                 "GTNH Pause menu buttons",
                 "Modules",
@@ -115,11 +104,6 @@ public class CoreModConfig extends ConfigManager {
                 "Modules",
                 ModHazardousItems_Enabled,
                 "Set to true to enable HazardousItems module. This needs a separate config file which is created once you start with this setting enabled");
-        ModCustomToolTips_Enabled = _mainConfig.getBoolean(
-                "CustomToolTips",
-                "Modules",
-                ModCustomToolTips_Enabled,
-                "Set to true to enable CustomToolTips module. This needs a separate config file which is created once you start with this setting enabled");
         ModCustomDrops_Enabled = _mainConfig.getBoolean(
                 "CustomDrops",
                 "Modules",
@@ -135,11 +119,6 @@ public class CoreModConfig extends ConfigManager {
                 "Modules",
                 ModAdminErrorLogs_Enabled,
                 "If set to true, every op/admin will receive all errors occoured during the startup phase as ingame message on join");
-        ModBabyChest_Enabled = _mainConfig.getBoolean(
-                "BabyChest",
-                "Modules",
-                ModBabyChest_Enabled,
-                "A complete, full working example for a custom chest, with its own renderer for items and blocks, custom sound and a GUI");
         ForestryStampsAndChunkLoaderCoinsEnabled = _mainConfig.getBoolean(
                 "ForestryStampsAndChunkLoaderCoinsEnabled",
                 "Modules",

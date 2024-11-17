@@ -9,7 +9,6 @@ import static gregtech.api.enums.Mods.GalaxySpace;
 import static gregtech.api.enums.Mods.GoodGenerator;
 import static gregtech.api.enums.Mods.GraviSuite;
 import static gregtech.api.enums.Mods.IronChests;
-import static gregtech.api.enums.Mods.RandomThings;
 import static gregtech.api.enums.Mods.TecTech;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.cutterRecipes;
@@ -70,7 +69,6 @@ public class ScriptAmunRa implements IScriptLoader {
                 GraviSuite.ID,
                 GTPlusPlus.ID,
                 IronChests.ID,
-                RandomThings.ID,
                 TecTech.ID);
     }
 
@@ -207,14 +205,12 @@ public class ScriptAmunRa implements IScriptLoader {
         addShapedOredictRecipe(
                 new ItemStack(machines4, 1, 1),
                 "GGG",
-                "ODO",
+                "O O",
                 "CFP",
                 'G',
                 new ItemStack(GameRegistry.findItem(AdvancedSolarPanel.ID, "asp_crafting_items"), 1, 5),
                 'O',
                 GameRegistry.findItemStack(GalacticraftCore.ID, "tile.oxygenCollector", 1),
-                'D',
-                GameRegistry.findItemStack(RandomThings.ID, "fertilizedDirt", 1),
                 'C',
                 "circuitData",
                 'F',

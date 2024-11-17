@@ -2,12 +2,10 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.enums.Mods.AE2FluidCraft;
 import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.EternalSingularity;
 import static gregtech.api.enums.Mods.GTPlusPlus;
 import static gregtech.api.enums.Mods.GoodGenerator;
 import static gregtech.api.enums.Mods.Minecraft;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
-import static gregtech.api.enums.Mods.OpenComputers;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.circuitAssemblerRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -52,10 +50,8 @@ public class ScriptAE2FC implements IScriptLoader {
         return Arrays.asList(
                 AE2FluidCraft.ID,
                 AppliedEnergistics2.ID,
-                OpenComputers.ID,
                 GoodGenerator.ID,
-                GTPlusPlus.ID,
-                EternalSingularity.ID);
+                GTPlusPlus.ID);
     }
 
     @Override
@@ -696,29 +692,6 @@ public class ScriptAE2FC implements IScriptLoader {
                 .itemOutputs(COMPONENT_16384).fluidInputs(Materials.SolderingAlloy.getMolten(72)).requiresCleanRoom()
                 .duration(10 * SECONDS).eut(TierEU.RECIPE_UV).addTo(circuitAssemblerRecipes);
 
-        // Fluid Quantum Drive
-        ExtremeCraftingManager.getInstance().addExtremeShapedOreRecipe(
-                (AE2FC_QUANTUM_CELL),
-                "---------",
-                "----a----",
-                "---bdb---",
-                "--bcdcb--",
-                "-addedda-",
-                "--bcdcb--",
-                "---bdb---",
-                "----a----",
-                "---------",
-                'a',
-                "blockCosmicNeutronium",
-                'b',
-                "plateDenseNeutronium",
-                'c',
-                "circuitInfinite",
-                'd',
-                COMPONENT_16384,
-                'e',
-                AE2FC_ADVANCED_FLUID_STORAGE_HOUSING);
-
         // level maintainer
         addShapedRecipe(
                 AE2FC_MAINTAIN,
@@ -958,24 +931,6 @@ public class ScriptAE2FC implements IScriptLoader {
         // Interface from Small to Block and opposite
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE_SMALL, AE2FC_INTERFACE);
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE, AE2FC_INTERFACE_SMALL);
-        // OC Component
-        ItemStack CHIP_T1 = getModItem(OpenComputers.ID, "item", 1, 24);
-        GameRegistry.addRecipe(
-                new ShapedOreRecipe(
-                        AE2FC_OCEDITOR,
-                        "IMI",
-                        "CBC",
-                        "IPI",
-                        'I',
-                        IRON_BAR,
-                        'M',
-                        CHIP_T1,
-                        'C',
-                        "oc:cable",
-                        'B',
-                        BUCKET,
-                        'P',
-                        AE2_BLANK_PATTERN));
         // Dual interface P2P
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE_P2P, AE2_P2P_ME, AE2FC_INTERFACE);
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE_P2P, AE2_P2P_ME, AE2FC_INTERFACE_SMALL);

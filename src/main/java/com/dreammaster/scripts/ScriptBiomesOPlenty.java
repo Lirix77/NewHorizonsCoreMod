@@ -46,9 +46,7 @@ public class ScriptBiomesOPlenty implements IScriptLoader {
         return Arrays.asList(
                 BiomesOPlenty.ID,
                 Forestry.ID,
-                GTPlusPlus.ID,
-                IguanaTweaksTinkerConstruct.ID,
-                PamsHarvestCraft.ID);
+                GTPlusPlus.ID);
     }
 
     @Override

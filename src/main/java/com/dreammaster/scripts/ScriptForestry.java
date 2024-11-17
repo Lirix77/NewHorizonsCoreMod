@@ -1,23 +1,14 @@
 package com.dreammaster.scripts;
 
-import static gregtech.api.enums.Mods.Backpack;
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.BuildCraftFactory;
 import static gregtech.api.enums.Mods.ExtraBees;
 import static gregtech.api.enums.Mods.Forestry;
 import static gregtech.api.enums.Mods.GTPlusPlus;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.MagicBees;
 import static gregtech.api.enums.Mods.Minecraft;
-import static gregtech.api.enums.Mods.Natura;
-import static gregtech.api.enums.Mods.PamsHarvestCraft;
-import static gregtech.api.enums.Mods.ProjectRedExpansion;
 import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.Thaumcraft;
-import static gregtech.api.enums.Mods.TinkerConstruct;
+import static gregtech.api.enums.Mods.ExtraCells2;
 import static gregtech.api.recipe.RecipeMaps.alloySmelterRecipes;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
-import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.fluidSolidifierRecipes;
 import static gregtech.api.recipe.RecipeMaps.formingPressRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -64,19 +55,10 @@ public class ScriptForestry implements IScriptLoader {
     public List<String> getDependencies() {
         return Arrays.asList(
                 Forestry.ID,
-                Thaumcraft.ID,
-                MagicBees.ID,
-                ProjectRedExpansion.ID,
-                Backpack.ID,
-                BiomesOPlenty.ID,
-                BuildCraftFactory.ID,
                 ExtraBees.ID,
                 GTPlusPlus.ID,
                 IndustrialCraft2.ID,
-                Natura.ID,
-                PamsHarvestCraft.ID,
-                Railcraft.ID,
-                TinkerConstruct.ID);
+                Railcraft.ID);
     }
 
     @Override
@@ -163,18 +145,6 @@ public class ScriptForestry implements IScriptLoader {
                 .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(10 * SECONDS).eut(16)
                 .addTo(alloySmelterRecipes);
         GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 0, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(10 * SECONDS).eut(16)
-                .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 1, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(10 * SECONDS).eut(16)
-                .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 2, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(10 * SECONDS).eut(16)
-                .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(Minecraft.ID, "paper", 8, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.dust, Materials.RawRubber, 6L))
@@ -248,9 +218,6 @@ public class ScriptForestry implements IScriptLoader {
                         GTUtility.getIntegratedCircuit(1))
                 .itemOutputs(getModItem(Forestry.ID, "factory2", 1, 2, missing)).duration(10 * SECONDS).eut(30)
                 .addTo(assemblerRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(BiomesOPlenty.ID, "hive", 1, 1, missing))
-                .itemOutputs(getModItem(Forestry.ID, "propolis", 1, 0, missing)).outputChances(500)
-                .duration(20 * SECONDS).eut(40).addTo(centrifugeRecipes);
         GTValues.RA.stdBuilder().itemInputs(ItemList.Shape_Mold_Nugget.get(0L))
                 .itemOutputs(getModItem(Forestry.ID, "honeyDrop", 1, 0, missing))
                 .fluidInputs(FluidRegistry.getFluidStack("for.honey", 200)).duration(20 * SECONDS).eut(8)
@@ -261,18 +228,6 @@ public class ScriptForestry implements IScriptLoader {
                 .addTo(formingPressRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(getModItem(Forestry.ID, "refractoryWax", 9, 0, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(5 * SECONDS).eut(30)
-                .addTo(formingPressRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 0, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(5 * SECONDS).eut(30)
-                .addTo(formingPressRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 1, missing), ItemList.Shape_Mold_Block.get(0L))
-                .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(5 * SECONDS).eut(30)
-                .addTo(formingPressRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(MagicBees.ID, "wax", 9, 2, missing), ItemList.Shape_Mold_Block.get(0L))
                 .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(5 * SECONDS).eut(30)
                 .addTo(formingPressRecipes);
 
@@ -363,16 +318,16 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Forestry.ID, "treealyzer", 1, 0, missing),
                 getModItem(Forestry.ID, "beealyzer", 1, 0, missing),
                 getModItem(Forestry.ID, "flutterlyzer", 1, 0, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "circuitBasic",
                 ItemList.Electric_Motor_LV.get(1L),
                 "circuitBasic");
         addShapedRecipe(
                 getModItem(Forestry.ID, "factory", 1, 0, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "plateCupronickel",
                 "ringAnyRubber",
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
@@ -383,7 +338,7 @@ public class ScriptForestry implements IScriptLoader {
         addShapedRecipe(
                 getModItem(Forestry.ID, "factory", 1, 1, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "plateCupronickel",
                 ItemList.Robot_Arm_LV.get(1L),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
@@ -407,16 +362,16 @@ public class ScriptForestry implements IScriptLoader {
                 "plateCupronickel",
                 ItemList.Rotor_LV.get(1L),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "gearGtSmallSteel",
                 ItemList.Electric_Motor_LV.get(1L),
                 "gearGtSmallSteel");
         addShapedRecipe(
                 getModItem(Forestry.ID, "factory", 1, 4, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "plateCupronickel",
                 ItemList.Rotor_LV.get(1L),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
@@ -427,7 +382,7 @@ public class ScriptForestry implements IScriptLoader {
         addShapedRecipe(
                 getModItem(Forestry.ID, "factory", 1, 5, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "plateCupronickel",
                 ItemList.Electric_Piston_LV.get(1L),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
@@ -440,9 +395,9 @@ public class ScriptForestry implements IScriptLoader {
                 "plateCupronickel",
                 getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 0, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "gearGtSmallSteel",
                 ItemList.Electric_Motor_LV.get(1L),
                 "gearGtSmallSteel");
@@ -480,17 +435,6 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Minecraft.ID, "chest", 1, 0, missing),
                 "screwIron");
         addShapedRecipe(
-                getModItem(Forestry.ID, "factory2", 1, 2, missing),
-                "screwIron",
-                getModItem(Minecraft.ID, "bookshelf", 1, 0, missing),
-                "screwIron",
-                "craftingToolSaw",
-                getModItem(TinkerConstruct.ID, "CraftingStation", 1, 0, missing),
-                "craftingToolScrewdriver",
-                "screwIron",
-                getModItem(Minecraft.ID, "chest", 1, 0, missing),
-                "screwIron");
-        addShapedRecipe(
                 getModItem(Forestry.ID, "mail", 1, 0, missing),
                 "plateIron",
                 getModItem(Minecraft.ID, "iron_bars", 1, 0, missing),
@@ -515,7 +459,7 @@ public class ScriptForestry implements IScriptLoader {
         addShapedRecipe(
                 getModItem(Forestry.ID, "engine", 1, 3, missing),
                 "plateCupronickel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "plateCupronickel",
                 "circuitBasic",
                 getModItem(Forestry.ID, "sturdyMachine", 1, 0, missing),
@@ -534,9 +478,6 @@ public class ScriptForestry implements IScriptLoader {
                 "beeComb",
                 "slabWood",
                 "beeComb");
-        addShapelessRecipe(
-                getModItem(Forestry.ID, "apiculture", 1, 2, missing),
-                getModItem(PamsHarvestCraft.ID, "apiary", 1, 0, missing));
         addShapelessRecipe(
                 getModItem(Forestry.ID, "beealyzer", 1, 0, missing),
                 getModItem(Forestry.ID, "beealyzer", 1, 0, missing));
@@ -590,115 +531,27 @@ public class ScriptForestry implements IScriptLoader {
                 "stickWood",
                 "stickWood",
                 "stickWood");
-        addShapedRecipe(
-                getModItem(Forestry.ID, "apiaristBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                getModItem(Forestry.ID, "apicultureChest", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "apiaristBag", 1, 0, missing),
                 getModItem(Forestry.ID, "apiaristBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "lepidopteristBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                getModItem(Forestry.ID, "lepidopterology", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "lepidopteristBag", 1, 0, missing),
                 getModItem(Forestry.ID, "lepidopteristBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "minerBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "ingotIron",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "ingotIron",
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "minerBag", 1, 0, missing),
                 getModItem(Forestry.ID, "minerBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "diggerBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "stone",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "stone",
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "diggerBag", 1, 0, missing),
                 getModItem(Forestry.ID, "diggerBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "foresterBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "logWood",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "logWood",
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "foresterBag", 1, 0, missing),
                 getModItem(Forestry.ID, "foresterBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "hunterBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                getModItem(Minecraft.ID, "feather", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                getModItem(Minecraft.ID, "feather", 1, 0, missing),
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "hunterBag", 1, 0, missing),
                 getModItem(Forestry.ID, "hunterBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "builderBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "fenceWood",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "fenceWood",
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "builderBag", 1, 0, missing),
                 getModItem(Forestry.ID, "builderBag", 1, 0, missing));
-        addShapedRecipe(
-                getModItem(Forestry.ID, "coinBag", 1, 0, missing),
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "plateGold",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "itemLeather",
-                "plateGold",
-                "itemLeather",
-                "itemLeather",
-                getModItem(Backpack.ID, "tannedLeather", 1, 0, missing),
-                "itemLeather");
         addShapelessRecipe(
                 getModItem(Forestry.ID, "coinBag", 1, 0, missing),
                 getModItem(Forestry.ID, "coinBag", 1, 0, missing));
@@ -2616,9 +2469,6 @@ public class ScriptForestry implements IScriptLoader {
                 "stickWood",
                 getModItem(Forestry.ID, "planksFireproof", 1, 28, missing),
                 "stickWood");
-        addShapelessRecipe(
-                getModItem(Forestry.ID, "factory2", 1, 2, missing),
-                getModItem(ProjectRedExpansion.ID, "projectred.expansion.machine2", 1, 10, missing));
         addShapedRecipe(
                 getModItem(Forestry.ID, "cart.beehouse", 1, 0, missing),
                 null,
@@ -2661,7 +2511,7 @@ public class ScriptForestry implements IScriptLoader {
                 'a',
                 GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L),
                 'b',
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 'c',
                 GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L),
                 'd',
@@ -2871,11 +2721,11 @@ public class ScriptForestry implements IScriptLoader {
                 'c',
                 getModItem(Forestry.ID, "thermionicTubes", 1, 6, missing),
                 'd',
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 'e',
                 GTOreDictUnificator.get(OrePrefixes.pipeMedium, Materials.StainlessSteel, 1L),
                 'f',
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 'g',
                 getModItem(Forestry.ID, "thermionicTubes", 1, 6, missing),
                 'h',
@@ -4485,96 +4335,6 @@ public class ScriptForestry implements IScriptLoader {
                 20,
                 FluidRegistry.getFluidStack("water", 100),
                 null,
-                getModItem(Forestry.ID, "fertilizerBio", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(Natura.ID, "barleyFood", 1, 0, missing),
-                'd',
-                getModItem(Natura.ID, "barleyFood", 1, 0, missing),
-                'e',
-                getModItem(Minecraft.ID, "dirt", 1, wildcard, missing),
-                'f',
-                getModItem(Natura.ID, "barleyFood", 1, 0, missing),
-                'h',
-                getModItem(Natura.ID, "barleyFood", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerBio", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(PamsHarvestCraft.ID, "barleyItem", 1, 0, missing),
-                'd',
-                getModItem(PamsHarvestCraft.ID, "barleyItem", 1, 0, missing),
-                'e',
-                getModItem(Minecraft.ID, "dirt", 1, wildcard, missing),
-                'f',
-                getModItem(PamsHarvestCraft.ID, "barleyItem", 1, 0, missing),
-                'h',
-                getModItem(PamsHarvestCraft.ID, "barleyItem", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerBio", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(BiomesOPlenty.ID, "plants", 1, 6, missing),
-                'd',
-                getModItem(BiomesOPlenty.ID, "plants", 1, 6, missing),
-                'e',
-                getModItem(Minecraft.ID, "dirt", 1, wildcard, missing),
-                'f',
-                getModItem(BiomesOPlenty.ID, "plants", 1, 6, missing),
-                'h',
-                getModItem(BiomesOPlenty.ID, "plants", 1, 6, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerBio", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(PamsHarvestCraft.ID, "ryeItem", 1, 0, missing),
-                'd',
-                getModItem(PamsHarvestCraft.ID, "ryeItem", 1, 0, missing),
-                'e',
-                getModItem(Minecraft.ID, "dirt", 1, wildcard, missing),
-                'f',
-                getModItem(PamsHarvestCraft.ID, "ryeItem", 1, 0, missing),
-                'h',
-                getModItem(PamsHarvestCraft.ID, "ryeItem", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerBio", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(PamsHarvestCraft.ID, "oatsItem", 1, 0, missing),
-                'd',
-                getModItem(PamsHarvestCraft.ID, "oatsItem", 1, 0, missing),
-                'e',
-                getModItem(Minecraft.ID, "dirt", 1, wildcard, missing),
-                'f',
-                getModItem(PamsHarvestCraft.ID, "oatsItem", 1, 0, missing),
-                'h',
-                getModItem(PamsHarvestCraft.ID, "oatsItem", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
                 getModItem(Forestry.ID, "fertilizerCompound", 5, 0, missing),
                 "abc",
                 "def",
@@ -4585,20 +4345,7 @@ public class ScriptForestry implements IScriptLoader {
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Apatite, 1L),
                 'h',
                 getModItem(Minecraft.ID, "sand", 1, wildcard, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerCompound", 6, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(Minecraft.ID, "sand", 1, wildcard, missing),
-                'e',
-                getModItem(MagicBees.ID, "miscResources", 1, 2, missing),
-                'h',
-                getModItem(Minecraft.ID, "sand", 1, wildcard, missing));
+
         RecipeManagers.carpenterManager.addRecipe(
                 20,
                 FluidRegistry.getFluidStack("water", 100),
@@ -4617,32 +4364,6 @@ public class ScriptForestry implements IScriptLoader {
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
                 'e',
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Apatite, 1L),
-                'f',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'g',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'h',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'i',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("water", 100),
-                null,
-                getModItem(Forestry.ID, "fertilizerCompound", 12, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'b',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'c',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'd',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
-                'e',
-                getModItem(MagicBees.ID, "miscResources", 1, 2, missing),
                 'f',
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 1L),
                 'g',
@@ -4725,32 +4446,6 @@ public class ScriptForestry implements IScriptLoader {
                 40,
                 FluidRegistry.getFluidStack("for.honey", 1000),
                 getModItem(Forestry.ID, "canEmpty", 1, 0, missing),
-                getModItem(Forestry.ID, "iodineCapsule", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                getModItem(Forestry.ID, "honeydew", 1, 0, missing),
-                'b',
-                getModItem(Forestry.ID, "pollen", 1, wildcard, missing),
-                'c',
-                getModItem(Forestry.ID, "honeydew", 1, 0, missing),
-                'd',
-                getModItem(Forestry.ID, "pollen", 1, wildcard, missing),
-                'e',
-                getModItem(MagicBees.ID, "propolis", 1, wildcard, missing),
-                'f',
-                getModItem(Forestry.ID, "pollen", 1, wildcard, missing),
-                'g',
-                getModItem(Minecraft.ID, "gunpowder", 1, 0, missing),
-                'h',
-                getModItem(Forestry.ID, "pollen", 1, wildcard, missing),
-                'i',
-                getModItem(Minecraft.ID, "gunpowder", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                40,
-                FluidRegistry.getFluidStack("for.honey", 1000),
-                getModItem(Forestry.ID, "canEmpty", 1, 0, missing),
                 getModItem(Forestry.ID, "craftingMaterial", 1, 4, missing),
                 "abc",
                 "def",
@@ -4791,32 +4486,6 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
                 'e',
                 getModItem(ExtraBees.ID, "propolis", 1, wildcard, missing),
-                'f',
-                getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
-                'g',
-                getModItem(Minecraft.ID, "gunpowder", 1, 0, missing),
-                'h',
-                getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
-                'i',
-                getModItem(Minecraft.ID, "gunpowder", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                40,
-                FluidRegistry.getFluidStack("for.honey", 1000),
-                getModItem(Forestry.ID, "canEmpty", 1, 0, missing),
-                getModItem(Forestry.ID, "craftingMaterial", 1, 4, missing),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                getModItem(Forestry.ID, "honeydew", 1, 0, missing),
-                'b',
-                getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
-                'c',
-                getModItem(Forestry.ID, "honeydew", 1, 0, missing),
-                'd',
-                getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
-                'e',
-                getModItem(MagicBees.ID, "propolis", 1, wildcard, missing),
                 'f',
                 getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
                 'g',
@@ -5248,42 +4917,6 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Minecraft.ID, "stick", 1, 0, missing));
         RecipeManagers.carpenterManager.addRecipe(
                 10,
-                FluidRegistry.getFluidStack("seedoil", 100),
-                null,
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                getModItem(Natura.ID, "natura.stick", 1, wildcard, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("seedoil", 250),
-                null,
-                getModItem(Forestry.ID, "frameImpregnated", 1, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                getModItem(Railcraft.ID, "slab", 1, 38, missing),
-                'b',
-                getModItem(Railcraft.ID, "slab", 1, 38, missing),
-                'c',
-                getModItem(Railcraft.ID, "slab", 1, 38, missing),
-                'd',
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing),
-                'e',
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                'f',
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing),
-                'g',
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing),
-                'h',
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing),
-                'i',
-                getModItem(Forestry.ID, "oakStick", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
                 FluidRegistry.getFluidStack("for.honey", 100),
                 null,
                 getModItem(Forestry.ID, "candle", 2, 0, missing),
@@ -5330,78 +4963,6 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Forestry.ID, "craftingMaterial", 1, 2, missing),
                 'h',
                 getModItem(Forestry.ID, "refractoryWax", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 4, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Minecraft.ID, "string", 1, 0, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 8, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Forestry.ID, "craftingMaterial", 1, 2, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 4, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Minecraft.ID, "string", 1, 0, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 1, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 8, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Forestry.ID, "craftingMaterial", 1, 2, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 1, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 4, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Minecraft.ID, "string", 1, 0, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 2, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                10,
-                FluidRegistry.getFluidStack("for.honey", 100),
-                null,
-                getModItem(Forestry.ID, "candle", 8, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'e',
-                getModItem(Forestry.ID, "craftingMaterial", 1, 2, missing),
-                'h',
-                getModItem(MagicBees.ID, "wax", 1, 2, missing));
         RecipeManagers.carpenterManager.addRecipe(
                 10,
                 FluidRegistry.getFluidStack("for.honey", 800),
@@ -5488,24 +5049,6 @@ public class ScriptForestry implements IScriptLoader {
                 getModItem(Minecraft.ID, "paper", 1, 0, missing),
                 'e',
                 getModItem(ExtraBees.ID, "propolis", 1, wildcard, missing),
-                'f',
-                getModItem(Minecraft.ID, "paper", 1, 0, missing),
-                'h',
-                getModItem(Minecraft.ID, "paper", 1, 0, missing));
-        RecipeManagers.carpenterManager.addRecipe(
-                20,
-                FluidRegistry.getFluidStack("seedoil", 200),
-                getModItem(Minecraft.ID, "paper", 1, 0, missing),
-                getModItem(Forestry.ID, "letters", 4, 0, missing),
-                "abc",
-                "def",
-                "ghi",
-                'b',
-                getModItem(Minecraft.ID, "paper", 1, 0, missing),
-                'd',
-                getModItem(Minecraft.ID, "paper", 1, 0, missing),
-                'e',
-                getModItem(MagicBees.ID, "propolis", 1, wildcard, missing),
                 'f',
                 getModItem(Minecraft.ID, "paper", 1, 0, missing),
                 'h',

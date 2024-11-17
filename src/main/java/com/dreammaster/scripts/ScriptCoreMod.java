@@ -47,7 +47,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 import com.dreammaster.block.BlockList;
 import com.dreammaster.gthandler.CustomItemList;
-import com.dreammaster.item.CustomPatterns;
 import com.dreammaster.main.NHItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -224,50 +223,6 @@ public class ScriptCoreMod implements IScriptLoader {
                 "craftingToolFile",
                 "craftingToolHardHammer",
                 null);
-        addShapedRecipe(
-                new ItemStack(CustomPatterns.BowFletchingCast, 1),
-                null,
-                null,
-                "craftingToolHardHammer",
-                null,
-                getModItem(TinkerConstruct.ID, "blankPattern", 1, 1, missing),
-                "craftingToolKnife",
-                null,
-                null,
-                "craftingToolFile");
-        addShapedRecipe(
-                new ItemStack(CustomPatterns.BowFletchingCast, 1),
-                null,
-                null,
-                "craftingToolHardHammer",
-                null,
-                "plateBrass",
-                "craftingToolKnife",
-                null,
-                null,
-                "craftingToolFile");
-        addShapedRecipe(
-                new ItemStack(CustomPatterns.BowStringCast, 1),
-                null,
-                null,
-                null,
-                null,
-                getModItem(TinkerConstruct.ID, "blankPattern", 1, 1, missing),
-                "craftingToolHardHammer",
-                null,
-                "craftingToolFile",
-                "craftingToolKnife");
-        addShapedRecipe(
-                new ItemStack(CustomPatterns.BowStringCast, 1),
-                null,
-                null,
-                null,
-                null,
-                "plateBrass",
-                "craftingToolHardHammer",
-                null,
-                "craftingToolFile",
-                "craftingToolKnife");
         addShapedRecipe(
                 getModItem(Minecraft.ID, "coal", 1, 1, missing),
                 getModItem(OpenBlocks.ID, "filledbucket", 1, 0, missing),
@@ -1024,18 +979,6 @@ public class ScriptCoreMod implements IScriptLoader {
                 CustomItemList.MarshmallowFormMold.get(1L),
                 true,
                 100);
-        TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(CustomPatterns.BowFletchingCast, 1),
-                FluidRegistry.getFluidStack("aluminumbrass.molten", 144),
-                getModItem(TinkerConstruct.ID, "fletching", 1, wildcard, missing),
-                true,
-                100);
-        TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(CustomPatterns.BowStringCast, 1),
-                FluidRegistry.getFluidStack("aluminumbrass.molten", 144),
-                getModItem(TinkerConstruct.ID, "bowstring", 1, wildcard, missing),
-                true,
-                100);
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
@@ -1485,54 +1428,6 @@ public class ScriptCoreMod implements IScriptLoader {
                         ItemList.Shape_Extruder_Plate.get(0L))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.plate, Materials.Manyullyn, 1)).duration(5 * SECONDS)
                 .eut(480).addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(Minecraft.ID, "feather", 1, 0, missing),
-                        new ItemStack(CustomPatterns.BowFletchingCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "fletching", 1, 0, missing)).duration(10 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(TinkerConstruct.ID, "materials", 1, 1, missing),
-                        new ItemStack(CustomPatterns.BowFletchingCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "fletching", 1, 2, missing)).duration(10 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(TinkerConstruct.ID, "materials", 1, 17, missing),
-                        new ItemStack(CustomPatterns.BowFletchingCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "fletching", 1, 3, missing)).duration(10 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(Minecraft.ID, "leaves", 1, 0, missing),
-                        new ItemStack(CustomPatterns.BowFletchingCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "fletching", 1, 1, missing)).duration(10 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(TinkerConstruct.ID, "slime.leaves", 1, 0, missing),
-                        new ItemStack(CustomPatterns.BowFletchingCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "fletching", 1, 4, missing)).duration(10 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(Minecraft.ID, "string", 3, 0, missing),
-                        new ItemStack(CustomPatterns.BowStringCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "bowstring", 1, 0, missing)).duration(20 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(Natura.ID, "barleyFood", 3, 7, missing),
-                        new ItemStack(CustomPatterns.BowStringCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "bowstring", 1, 2, missing)).duration(20 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(Thaumcraft.ID, "ItemResource", 3, 7, missing),
-                        new ItemStack(CustomPatterns.BowStringCast, 0))
-                .itemOutputs(getModItem(TinkerConstruct.ID, "bowstring", 1, 1, missing)).duration(20 * SECONDS).eut(30)
-                .addTo(extruderRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         com.dreammaster.item.ItemList.EngravedManyullynCrystalChip.getIS(1),

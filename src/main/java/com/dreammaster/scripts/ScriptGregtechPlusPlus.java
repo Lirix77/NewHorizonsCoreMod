@@ -6,7 +6,6 @@ import static gregtech.api.enums.Mods.GregTech;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.IronTanks;
 import static gregtech.api.enums.Mods.Minecraft;
-import static gregtech.api.enums.Mods.RemoteIO;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeConstants.QFT_FOCUS_TIER;
@@ -51,25 +50,12 @@ public class ScriptGregtechPlusPlus implements IScriptLoader {
                 Forestry.ID,
                 IndustrialCraft2.ID,
                 IronTanks.ID,
-                RemoteIO.ID,
                 EternalSingularity.ID,
                 GregTech.ID);
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(
-                GregtechItemList.GT4_Thermal_Boiler.get(1),
-                getModItem(RemoteIO.ID, "tile.machine", 1, 1, missing),
-                ItemList.Machine_HV_Centrifuge.get(1L),
-                getModItem(RemoteIO.ID, "tile.machine", 1, 1, missing),
-                "gearGtTungstenSteel",
-                "circuitElite",
-                "gearGtTungstenSteel",
-                getModItem(RemoteIO.ID, "tile.machine", 1, 1, missing),
-                ItemList.Machine_HV_Centrifuge.get(1L),
-                getModItem(RemoteIO.ID, "tile.machine", 1, 1, missing));
-
         addShapedRecipe(
                 MaterialsAlloy.TUMBAGA.getRod(1),
                 "craftingToolFile",

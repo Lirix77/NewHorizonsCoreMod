@@ -4985,7 +4985,7 @@ public class AssemblerRecipes implements Runnable {
                         alveary,
                         GTModHandler.getModItem(Forestry.ID, "thermionicTubes", 4L, 6),
                         GTOreDictUnificator.get(OrePrefixes.circuit, Materials.MV, 1L),
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 2L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.pipeMedium, Materials.StainlessSteel, 1L),
                         GTOreDictUnificator.get(OrePrefixes.plate, Materials.RedAlloy, 1L))
                 .itemOutputs(GTModHandler.getModItem(Forestry.ID, "alveary", 1L, 5))
@@ -6486,7 +6486,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Copper, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "copperTank", 1L, 0))
@@ -6496,7 +6496,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Iron, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "ironTank", 1L, 0))
@@ -6506,7 +6506,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Steel, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "silverTank", 1L, 0))
@@ -6516,7 +6516,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Gold, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "goldTank", 1L, 0))
@@ -6526,7 +6526,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plate, Materials.Diamond, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "diamondTank", 1L, 0))
@@ -6536,7 +6536,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Obsidian, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "obsidianTank", 1L, 0))
@@ -6546,7 +6546,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Aluminium, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "emeraldTank", 1L, 0))
@@ -6555,7 +6555,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.StainlessSteel, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "stainlesssteelTank", 1L, 0))
@@ -6565,7 +6565,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Titanium, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "titaniumTank", 1L, 0))
@@ -6574,7 +6574,7 @@ public class AssemblerRecipes implements Runnable {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                        GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                         GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.TungstenSteel, 1L),
                         GTUtility.getIntegratedCircuit(4))
                 .itemOutputs(GTModHandler.getModItem(IronTanks.ID, "tungstensteelTank", 1L, 0))
@@ -9694,7 +9694,7 @@ public class AssemblerRecipes implements Runnable {
                         .itemInputs(
                                 ItemList.Circuit_Board_Plastic_Advanced.get(1L),
                                 GTOreDictUnificator.get(OrePrefixes.itemCasing, Materials.Aluminium, 2L),
-                                GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1L, 0),
+                                GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                                 GTOreDictUnificator.get(OrePrefixes.bolt, Materials.Silver, 8L),
                                 GTUtility.getIntegratedCircuit(1))
                         .itemOutputs(GTModHandler.getModItem(OpenComputers.ID, "item", 1L, 76))

@@ -1,18 +1,6 @@
 package com.dreammaster.scripts;
 
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.BuildCraftFactory;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.GTPlusPlus;
-import static gregtech.api.enums.Mods.GregTech;
-import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.Minecraft;
-import static gregtech.api.enums.Mods.Natura;
-import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.Thaumcraft;
-import static gregtech.api.enums.Mods.TinkerConstruct;
-import static gregtech.api.enums.Mods.TinkersGregworks;
-import static gregtech.api.enums.Mods.TwilightForest;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.alloySmelterRecipes;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
@@ -328,9 +316,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "circuitGood",
                 ItemList.Casing_HeatProof.get(1L),
                 "circuitGood",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 5, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing));
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
         addShapelessRecipe(
                 getModItem(IndustrialCraft2.ID, "itemSteamTurbineBlade", 1, 0, missing),
                 getModItem(Railcraft.ID, "part.turbine.disk", 1, 0, missing));
@@ -673,9 +661,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "itemCasingSteel",
                 "craftingToolHardHammer",
                 "itemCasingSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "screwSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "itemCasingSteel",
                 "craftingToolScrewdriver",
                 "itemCasingSteel");
@@ -775,9 +763,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "craftingToolScrewdriver");
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 2, missing),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "chestIron",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "itemCasingSteel",
                 ItemList.Casing_LV.get(1L),
                 "itemCasingSteel",
@@ -822,9 +810,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "itemCasingAnyIron",
                 ItemList.Cover_SolarPanel.get(1L),
                 "itemCasingAnyIron",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 ItemList.Casing_LV.get(1L),
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "itemCasingAnyIron",
                 "circuitBasic",
                 "itemCasingAnyIron");
@@ -847,9 +835,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "pipeMediumSteel",
                 getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 6, missing),
                 "pipeMediumSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "circuitBasic",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing));
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 14, missing),
                 "itemCasingSteel",
@@ -858,17 +846,17 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "pipeMediumSteel",
                 ItemList.Electric_Pump_MV.get(1L),
                 "pipeMediumSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "circuitBasic",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing));
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 12, missing),
                 "itemCasingSteel",
                 ItemList.Electric_Pump_LV.get(1L),
                 "itemCasingSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "chestSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "itemCasingSteel",
                 "circuitBasic",
                 "itemCasingSteel");
@@ -958,7 +946,7 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 ItemList.Casing_Firebox_Steel.get(1L),
                 "pipeMediumSteel",
                 "itemCasingSteel",
-                getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0, missing),
+                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
                 "itemCasingSteel");
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockHeatGenerator", 1, 0, missing),

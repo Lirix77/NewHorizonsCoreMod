@@ -1,9 +1,7 @@
 package com.dreammaster.main;
 
-import static gregtech.api.enums.Dyes.MACHINE_METAL;
 import static gregtech.api.enums.Mods.Avaritia;
 import static gregtech.api.enums.Mods.BloodMagic;
-import static gregtech.api.enums.Mods.DetravScannerMod;
 import static gregtech.api.enums.Mods.Railcraft;
 import static gregtech.api.enums.Mods.SGCraft;
 import static gregtech.api.enums.Mods.Thaumcraft;
@@ -11,14 +9,11 @@ import static gregtech.api.enums.Mods.TinkerConstruct;
 import static gregtech.api.enums.Mods.TwilightForest;
 import static gregtech.api.enums.Mods.Witchery;
 import static gregtech.api.enums.Mods.ZTones;
-import static gregtech.api.recipe.RecipeMaps.compressorRecipes;
-import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 
 import java.io.File;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,15 +31,12 @@ import com.dreammaster.bartworksHandler.VoidMinerLoader;
 import com.dreammaster.baubles.OvenGlove;
 import com.dreammaster.baubles.WitherProtectionRing;
 import com.dreammaster.block.BlockList;
-import com.dreammaster.client.util.GTNHPauseScreen;
 import com.dreammaster.command.AllPurposeDebugCommand;
 import com.dreammaster.command.CustomDropsCommand;
 import com.dreammaster.command.CustomFuelsCommand;
-import com.dreammaster.command.CustomToolTipsCommand;
 import com.dreammaster.command.HazardousItemsCommand;
 import com.dreammaster.config.CoreModConfig;
 import com.dreammaster.creativetab.ModTabList;
-import com.dreammaster.detrav.ScannerTools;
 import com.dreammaster.fluids.FluidList;
 import com.dreammaster.gthandler.CoreMod_PCBFactory_MaterialLoader;
 import com.dreammaster.gthandler.GT_CoreModSupport;
@@ -52,25 +44,17 @@ import com.dreammaster.gthandler.GT_CustomLoader;
 import com.dreammaster.gthandler.GT_Loader_CasingNH;
 import com.dreammaster.gthandler.GT_Loader_ItemPipes;
 import com.dreammaster.gthandler.recipes.DTPFRecipes;
-import com.dreammaster.item.CustomPatterns;
 import com.dreammaster.item.ItemBucketList;
 import com.dreammaster.item.ItemList;
 import com.dreammaster.item.WoodenBrickForm;
 import com.dreammaster.lib.Refstrings;
-import com.dreammaster.loginhandler.LoginHandler;
-import com.dreammaster.modbabychest.BlockBabyChest;
-import com.dreammaster.modbabychest.ItemBlockBabyChest;
-import com.dreammaster.modbabychest.TileEntityBabyChest;
-import com.dreammaster.modctt.CustomToolTipsHandler;
 import com.dreammaster.modcustomdrops.CustomDropsHandler;
 import com.dreammaster.modcustomfuels.CustomFuelsHandler;
-import com.dreammaster.modfixes.GTpp.GregTechPlusPlusAbandonedAspectsFix;
 import com.dreammaster.modfixes.ModFixesMaster;
 import com.dreammaster.modfixes.avaritia.SkullFireSwordDropFix;
 import com.dreammaster.modfixes.minetweaker.MinetweakerFurnaceFix;
 import com.dreammaster.modfixes.oilgen.OilGeneratorFix;
 import com.dreammaster.modhazardousitems.HazardousItemsHandler;
-import com.dreammaster.network.CoreModDispatcher;
 import com.dreammaster.oredict.OreDictHandler;
 import com.dreammaster.railcraftStones.NH_GeodePopulator;
 import com.dreammaster.railcraftStones.NH_QuarryPopulator;
@@ -90,7 +74,6 @@ import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import eu.usrv.yamcore.YAMCore;
@@ -103,7 +86,6 @@ import eu.usrv.yamcore.fluids.ModFluidManager;
 import eu.usrv.yamcore.items.ModItemManager;
 import gregtech.GTMod;
 import gregtech.api.GregTechAPI;
-import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
 import gregtech.api.util.GTLanguageManager;
 import gregtech.common.items.MetaGeneratedItem01;
@@ -113,7 +95,6 @@ import gregtech.common.items.MetaGeneratedItem01;
         name = Refstrings.NAME,
         version = Refstrings.VERSION,
         dependencies = "required-before:gregtech;" + "required-after:Forge@[10.13.2.1291,);"
-                + "required-after:gtnhlib@[0.5.15,);"
                 + "required-after:YAMCore@[0.5.76,);"
                 + "required-after:Baubles@[1.0.1.10,);"
                 + "after:EnderIO;"
@@ -133,13 +114,11 @@ public class MainRegistry {
     public static ModFluidManager FluidManager;
     public static ModBlockManager BlockManager;
     public static HazardousItemsHandler Module_HazardousItems;
-    public static CustomToolTipsHandler Module_CustomToolTips;
     public static CustomFuelsHandler Module_CustomFuels;
     public static CustomDropsHandler Module_CustomDrops;
     public static IngameErrorLog Module_AdminErrorLogs;
     public static GT_CustomLoader GTCustomLoader;
     public static CoreModConfig CoreConfig;
-    public static CoreModDispatcher NW;
     public static Random Rnd;
     public static LogHelper Logger = new LogHelper(Refstrings.MODID);
     private static BacteriaRegistry BacteriaRegistry;
@@ -151,7 +130,7 @@ public class MainRegistry {
     }
 
     public MainRegistry() {
-        if (DetravScannerMod.isModLoaded()) GregTechAPI.sAfterGTPreload.add(ScannerTools::new);
+        //if (DetravScannerMod.isModLoaded()) GregTechAPI.sAfterGTPreload.add(ScannerTools::new);
     }
 
     @Mod.EventHandler
@@ -185,23 +164,10 @@ public class MainRegistry {
         Configuration tMainConfig = new Configuration(tFile);
         tMainConfig.load();
 
-        GregTechAPI.sUseMachineMetal = tMainConfig.get("machines", "use_machine_metal_tint", true).getBoolean(true);
-        if (GregTechAPI.sUseMachineMetal) {
-            // use default in GregTech Dyes enum.
-        } else {
-            // Override MACHINE_METAL dye color with white
-            MACHINE_METAL.mRGBa[0] = 255;
-            MACHINE_METAL.mRGBa[1] = 255;
-            MACHINE_METAL.mRGBa[2] = 255;
-        }
-
         proxy.addTexturePage();
         // ------------------------------------------------------------
 
         // ------------------------------------------------------------
-        Logger.debug("PRELOAD Init NetworkChannel");
-        NW = new CoreModDispatcher();
-        NW.registerPackets();
         // ------------------------------------------------------------
 
         // ------------------------------------------------------------
@@ -224,7 +190,6 @@ public class MainRegistry {
         // ------------------------------------------------------------
         Logger.debug("PRELOAD Create Items");
         if (!ItemList.AddToItemManager(ItemManager)
-                | !(!TinkerConstruct.isModLoaded() || CustomPatterns.RegisterPatterns(TabManager))
                 | !(BioItemLoader.preInit())) {
             Logger.warn("Some items failed to register. Check the logfile for details");
             AddLoginError("[CoreMod-Items] Some items failed to register. Check the logfile for details");
@@ -247,13 +212,6 @@ public class MainRegistry {
             Logger.debug("Module_HazardousItems is enabled");
             Module_HazardousItems = new HazardousItemsHandler();
             // Module_HazardousItems.LoadConfig();
-        }
-
-        if (CoreConfig.ModCustomToolTips_Enabled) {
-            Logger.debug("Module_CustomToolTips is enabled");
-            Module_CustomToolTips = new CustomToolTipsHandler();
-            proxy.registerResourceReload();
-            // Module_CustomToolTips.LoadConfig();
         }
 
         if (CoreConfig.ModCustomFuels_Enabled) {
@@ -301,16 +259,9 @@ public class MainRegistry {
         BacteriaRegistry = new BacteriaRegistry();
 
         Logger.debug("LOAD abandoned GT++ Aspects");
-        if (Thaumcraft.isModLoaded()) {
-            new GregTechPlusPlusAbandonedAspectsFix();
-        }
 
         if (Witchery.isModLoaded()) {
             new WitcheryPlugin();
-        }
-
-        if (CoreModConfig.ModLoginMessage_Enabled) {
-            FMLCommonHandler.instance().bus().register(new LoginHandler());
         }
         Logger.warn("==================================================");
         Logger.warn("Welcome to Gregtech:New Horizons " + CoreModConfig.ModPackVersion);
@@ -343,10 +294,7 @@ public class MainRegistry {
     public void load(FMLInitializationEvent event) {
         // register events in modules
         RegisterModuleEvents();
-
-        if (CoreConfig.ModBabyChest_Enabled) {
-            InitAdditionalBlocks();
-        }
+        InitAdditionalBlocks();
 
         // Register additional OreDictionary Names
         if (CoreConfig.OreDictItems_Enabled) OreDictHandler.register_all();
@@ -370,25 +318,9 @@ public class MainRegistry {
 
         BWGlassAdder.registerGlasses();
 
-        if (CoreConfig.gtnhPauseMenuButtons && event.getSide().isClient()) {
-            MinecraftForge.EVENT_BUS.register(new GTNHPauseScreen());
-        }
-
     }
 
-    public static Block _mBlockBabyChest = new BlockBabyChest();
-
     private void InitAdditionalBlocks() {
-        GameRegistry.registerBlock(_mBlockBabyChest, ItemBlockBabyChest.class, "BabyChest");
-        GameRegistry.addShapelessRecipe(new ItemStack(_mBlockBabyChest, 9), new ItemStack(Blocks.chest, 1, 0));
-
-        GTValues.RA.stdBuilder().itemInputs(new ItemStack(_mBlockBabyChest, 9))
-                .itemOutputs(new ItemStack(Blocks.chest, 1, 0)).duration(15 * SECONDS).eut(2).addTo(compressorRecipes);
-
-        GameRegistry.registerTileEntity(TileEntityBabyChest.class, "teBabyChest");
-
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-
         proxy.registerRenderInfo();
         GT_Loader_CasingNH.load();
     }
@@ -400,11 +332,6 @@ public class MainRegistry {
 
         if (CoreConfig.ModHazardousItems_Enabled) {
             FMLCommonHandler.instance().bus().register(Module_HazardousItems);
-        }
-
-        if (CoreConfig.ModCustomToolTips_Enabled) {
-            MinecraftForge.EVENT_BUS.register(Module_CustomToolTips);
-            FMLCommonHandler.instance().bus().register(Module_CustomToolTips);
         }
 
         if (CoreConfig.ModCustomFuels_Enabled) {
@@ -446,10 +373,6 @@ public class MainRegistry {
 
         if (CoreConfig.ModHazardousItems_Enabled) {
             Module_HazardousItems.LoadConfig();
-        }
-
-        if (CoreConfig.ModCustomToolTips_Enabled) {
-            Module_CustomToolTips.LoadConfig();
         }
 
         if (CoreConfig.ModCustomFuels_Enabled) {
@@ -555,9 +478,6 @@ public class MainRegistry {
     public void serverLoad(FMLServerStartingEvent pEvent) {
         if (CoreConfig.ModHazardousItems_Enabled) {
             pEvent.registerServerCommand(new HazardousItemsCommand());
-        }
-        if (CoreConfig.ModCustomToolTips_Enabled) {
-            pEvent.registerServerCommand(new CustomToolTipsCommand());
         }
         if (CoreConfig.ModCustomFuels_Enabled) {
             pEvent.registerServerCommand(new CustomFuelsCommand());

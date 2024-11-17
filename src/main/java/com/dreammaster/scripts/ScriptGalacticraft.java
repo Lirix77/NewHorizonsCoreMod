@@ -2,7 +2,6 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.enums.Mods.AE2FluidCraft;
 import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BuildCraftTransport;
 import static gregtech.api.enums.Mods.CarpentersBlocks;
 import static gregtech.api.enums.Mods.GalacticraftCore;
 import static gregtech.api.enums.Mods.GalacticraftMars;
@@ -11,9 +10,7 @@ import static gregtech.api.enums.Mods.GraviSuite;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.IronChests;
 import static gregtech.api.enums.Mods.Minecraft;
-import static gregtech.api.enums.Mods.PamsHarvestCraft;
 import static gregtech.api.enums.Mods.ProjectRedIllumination;
-import static gregtech.api.enums.Mods.TinkersGregworks;
 import static gregtech.api.recipe.RecipeMaps.arcFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
@@ -91,12 +88,10 @@ public class ScriptGalacticraft implements IScriptLoader {
                 GalaxySpace.ID,
                 AE2FluidCraft.ID,
                 AppliedEnergistics2.ID,
-                BuildCraftTransport.ID,
                 CarpentersBlocks.ID,
                 GraviSuite.ID,
                 IndustrialCraft2.ID,
                 IronChests.ID,
-                PamsHarvestCraft.ID,
                 ProjectRedIllumination.ID);
     }
 
@@ -321,28 +316,6 @@ public class ScriptGalacticraft implements IScriptLoader {
                 getModItem(GalacticraftCore.ID, "tile.aluminumWire", 1, 1, missing),
                 null,
                 getModItem(GalacticraftCore.ID, "tile.aluminumWire", 1, 1, missing),
-                "craftingToolFile");
-        addShapedRecipe(
-                getModItem(GalacticraftCore.ID, "tile.enclosed", 1, 11, missing),
-                "craftingToolHardHammer",
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowerstone", 1, 0, missing),
-                null,
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowerstone", 1, 0, missing),
-                getModItem(GalacticraftCore.ID, "tile.gcBlockCore", 1, 4, missing),
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowerstone", 1, 0, missing),
-                null,
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowerstone", 1, 0, missing),
-                "craftingToolFile");
-        addShapedRecipe(
-                getModItem(GalacticraftCore.ID, "tile.enclosed", 1, 12, missing),
-                "craftingToolHardHammer",
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowergold", 1, 0, missing),
-                null,
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowergold", 1, 0, missing),
-                getModItem(GalacticraftCore.ID, "tile.gcBlockCore", 1, 4, missing),
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowergold", 1, 0, missing),
-                null,
-                getModItem(BuildCraftTransport.ID, "item.buildcraftPipe.pipepowergold", 1, 0, missing),
                 "craftingToolFile");
         addShapelessRecipe(getModItem(GalacticraftCore.ID, "tile.aluminumWire", 1, 0, missing), "cableGt01Aluminium");
         addShapedRecipe(
@@ -1092,23 +1065,6 @@ public class ScriptGalacticraft implements IScriptLoader {
                 getModItem(GalacticraftMars.ID, "item.null", 1, 5, missing),
                 "cableGt02Aluminium");
         addShapedRecipe(
-                getModItem(GalacticraftMars.ID, "item.grapple", 1, 0, missing),
-                null,
-                null,
-                createItemStack(
-                        TinkersGregworks.ID,
-                        "tGregToolPartArrowHead",
-                        1,
-                        1573,
-                        "{material:\"MeteoricSteel\"}",
-                        missing),
-                CustomItemList.MeteoricIronString.get(1L),
-                CustomItemList.MeteoricIronString.get(1L),
-                CustomItemList.MeteoricIronString.get(1L),
-                "springMeteoricSteel",
-                null,
-                null);
-        addShapedRecipe(
                 getModItem(GalacticraftMars.ID, "tile.minerBase", 4, 0, missing),
                 "compressedTitanium",
                 "chestSteel",
@@ -1130,17 +1086,6 @@ public class ScriptGalacticraft implements IScriptLoader {
                 "compressedSteel",
                 getModItem(GalacticraftMars.ID, "item.itemBasicAsteroids", 1, 8, missing),
                 "compressedSteel");
-        addShapedRecipe(
-                getModItem(GalacticraftCore.ID, "item.canvas", 1, 0, missing),
-                null,
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "stickPlastic",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "stickPlastic",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                "stickPlastic",
-                getModItem(PamsHarvestCraft.ID, "wovencottonItem", 1, 0, missing),
-                null);
         addShapedRecipe(
                 getModItem(GalacticraftCore.ID, "item.basicItem", 1, 20, missing),
                 "circuitAdvanced",
@@ -1632,15 +1577,6 @@ public class ScriptGalacticraft implements IScriptLoader {
     private void assemblerRecipes() {
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        getModItem(PamsHarvestCraft.ID, "wovencottonItem", 8, 0, missing),
-                        GTOreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 8L),
-                        CustomItemList.MeteoricIronString.get(8L),
-                        GTUtility.getIntegratedCircuit(1))
-                .itemOutputs(getModItem(GalacticraftMars.ID, "item.itemBasicAsteroids", 1, 7, missing))
-                .fluidInputs(FluidRegistry.getFluidStack("molten.silicone", 144)).duration(15 * SECONDS).eut(480)
-                .addTo(assemblerRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
                         GTOreDictUnificator.get(OrePrefixes.stick, Materials.Carbon, 1L),
                         getModItem(Minecraft.ID, "glowstone_dust", 1, 0, missing),
                         GTUtility.getIntegratedCircuit(2))
@@ -1741,12 +1677,6 @@ public class ScriptGalacticraft implements IScriptLoader {
                         getModItem(GalacticraftCore.ID, "item.basicItem", 1, 9, missing))
                 .itemOutputs(getModItem(GalacticraftCore.ID, "item.basicItem", 1, 0, missing)).duration(10 * SECONDS)
                 .eut(120).addTo(assemblerRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        getModItem(PamsHarvestCraft.ID, "wovencottonItem", 2, 0, missing),
-                        GTOreDictUnificator.get(OrePrefixes.stick, Materials.Plastic, 2L))
-                .itemOutputs(getModItem(GalacticraftCore.ID, "item.canvas", 1, 0, missing)).duration(15 * SECONDS)
-                .eut(480).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(GalacticraftCore.ID, "item.canvas", 2, 0, missing),

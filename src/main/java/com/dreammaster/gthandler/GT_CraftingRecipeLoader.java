@@ -1,24 +1,6 @@
 package com.dreammaster.gthandler;
 
-import static gregtech.api.enums.Mods.AE2FluidCraft;
-import static gregtech.api.enums.Mods.AdventureBackpack;
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BuildCraftFactory;
-import static gregtech.api.enums.Mods.Chisel;
-import static gregtech.api.enums.Mods.Computronics;
-import static gregtech.api.enums.Mods.ExtraUtilities;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.GalacticraftCore;
-import static gregtech.api.enums.Mods.GalacticraftMars;
-import static gregtech.api.enums.Mods.GalaxySpace;
-import static gregtech.api.enums.Mods.IguanaTweaksTinkerConstruct;
-import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.OpenComputers;
-import static gregtech.api.enums.Mods.OpenPrinters;
-import static gregtech.api.enums.Mods.ProjectRedIllumination;
-import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.TinkerConstruct;
-import static gregtech.api.enums.Mods.ZTones;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.enums.OrePrefixes.screw;
 import static gregtech.api.util.GTModHandler.RecipeBits.DELETE_ALL_OTHER_RECIPES;
 import static gtPlusPlus.core.material.MaterialsAlloy.AQUATIC_STEEL;
@@ -1404,7 +1386,7 @@ public class GT_CraftingRecipeLoader extends gregtech.loaders.postload.CraftingR
                     bits,
                     new Object[] { "SXS", "TCT", "EZE", 'S', OrePrefixes.itemCasing.get(Materials.StainlessSteel), 'X',
                             OrePrefixes.circuit.get(Materials.HV), 'T',
-                            GTModHandler.getModItem(BuildCraftFactory.ID, "tankBlock", 1, 0), 'C',
+                            GTModHandler.getModItem(ExtraCells2.ID, "certustank", 1, 0), 'C',
                             GTModHandler.getModItem(IndustrialCraft2.ID, "reactorCoolantSix", 1, 1), 'Z',
                             GTModHandler.getModItem(AdventureBackpack.ID, "backpackComponent", 1, 5), 'E',
                             GTModHandler.getModItem(Mods.GraviSuite.ID, "itemSimpleItem", 1, 6) });

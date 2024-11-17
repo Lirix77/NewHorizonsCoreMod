@@ -2,27 +2,13 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.GregTechAPI.sBlockOres1;
 import static gregtech.api.enums.Mods.AdvancedSolarPanel;
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.BloodArsenal;
-import static gregtech.api.enums.Mods.CropsPlusPlus;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.MCFrames;
 import static gregtech.api.enums.Mods.Minecraft;
-import static gregtech.api.enums.Mods.Natura;
-import static gregtech.api.enums.Mods.OpenBlocks;
-import static gregtech.api.enums.Mods.PamsHarvestCraft;
-import static gregtech.api.enums.Mods.ProjectRedExpansion;
-import static gregtech.api.enums.Mods.ProjectRedTransmission;
-import static gregtech.api.enums.Mods.SGCraft;
 import static gregtech.api.enums.Mods.StructureLib;
 import static gregtech.api.enums.Mods.SuperSolarPanels;
-import static gregtech.api.enums.Mods.Thaumcraft;
-import static gregtech.api.enums.Mods.ThaumicBases;
 import static gregtech.api.enums.Mods.TinkerConstruct;
 import static gregtech.api.recipe.RecipeMaps.alloySmelterRecipes;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
-import static gregtech.api.recipe.RecipeMaps.autoclaveRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
 import static gregtech.api.recipe.RecipeMaps.extruderRecipes;
 import static gregtech.api.recipe.RecipeMaps.formingPressRecipes;
@@ -43,7 +29,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import com.dreammaster.gthandler.CustomItemList;
 
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
-import gregtech.api.GregTechAPI;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
@@ -53,8 +38,6 @@ import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import tconstruct.library.TConstructRegistry;
-import vexatos.tgregworks.reference.PartTypes;
-import vexatos.tgregworks.util.TGregUtils;
 
 public class ScriptGregtech implements IScriptLoader {
 
@@ -66,38 +49,15 @@ public class ScriptGregtech implements IScriptLoader {
     @Override
     public List<String> getDependencies() {
         return Arrays.asList(
-                MCFrames.ID,
-                ProjectRedExpansion.ID,
-                ProjectRedTransmission.ID,
                 StructureLib.ID,
                 AdvancedSolarPanel.ID,
-                BiomesOPlenty.ID,
-                BloodArsenal.ID,
-                CropsPlusPlus.ID,
                 IndustrialCraft2.ID,
-                Natura.ID,
-                OpenBlocks.ID,
-                PamsHarvestCraft.ID,
-                SGCraft.ID,
                 SuperSolarPanels.ID,
-                Thaumcraft.ID,
-                ThaumicBases.ID,
                 TinkerConstruct.ID);
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(
-                ItemList.Teleporter.get(1L),
-                "circuitOptical",
-                getModItem(SGCraft.ID, "ic2PowerUnit", 1, 0, missing),
-                "circuitOptical",
-                getModItem(SGCraft.ID, "ic2Capacitor", 1, 0, missing),
-                getModItem(SGCraft.ID, "stargateBase", 1, 0, missing),
-                getModItem(SGCraft.ID, "ic2Capacitor", 1, 0, missing),
-                getModItem(SGCraft.ID, "ic2Capacitor", 1, 0, missing),
-                getModItem(SGCraft.ID, "ocInterface", 1, 0, missing),
-                getModItem(SGCraft.ID, "ic2Capacitor", 1, 0, missing));
         addShapedRecipe(
                 GTOreDictUnificator.get(OrePrefixes.toolHeadSword, Materials.Diamond, 1L),
                 null,
@@ -177,10 +137,6 @@ public class ScriptGregtech implements IScriptLoader {
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.MeatRaw, 1L),
                 "craftingToolMortar",
                 "listAllfishraw");
-        addShapelessRecipe(
-                getModItem(Minecraft.ID, "sugar", 4, 0, missing),
-                "craftingToolMortar",
-                getModItem(CropsPlusPlus.ID, "foodBerries", 1, 1, missing));
         addShapelessRecipe(
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.MeatCooked, 1L),
                 "craftingToolMortar",
@@ -353,12 +309,6 @@ public class ScriptGregtech implements IScriptLoader {
                 "itemCasingStainlessSteel",
                 "circuitAdvanced",
                 "itemCasingStainlessSteel");
-        addShapelessRecipe(
-                ItemList.Cover_SolarPanel.get(1L),
-                getModItem(ProjectRedExpansion.ID, "projectred.expansion.solar_panel", 1, 0, missing));
-        addShapelessRecipe(
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1L),
-                getModItem(ProjectRedTransmission.ID, "projectred.transmission.wire", 1, 0, missing));
         addShapedRecipe(
                 GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Rubber, 1),
                 "stickRubber",
@@ -394,16 +344,6 @@ public class ScriptGregtech implements IScriptLoader {
                 "stickEnderEye",
                 "craftingToolHardHammer",
                 "stickEnderEye");
-        addShapelessRecipe(
-                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Wood, 2L),
-                getModItem(MCFrames.ID, "mcframes.frame", 1, 0, missing));
-        addShapelessRecipe(
-                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Wood, 1L),
-                getModItem(OpenBlocks.ID, "scaffolding", 1, 0, missing));
-        addShapelessRecipe(
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Glass, 1L),
-                "craftingToolMortar",
-                getModItem(BloodArsenal.ID, "glass_shard", 1, 0, missing));
         addShapedRecipe(
                 ItemList.Casing_Pump.get(1L),
                 "itemCasingStainlessSteel",
@@ -519,116 +459,6 @@ public class ScriptGregtech implements IScriptLoader {
                 GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tungsten, 1L),
                 "circuitElite",
                 GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tungsten, 1L));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockStones, 1, 2),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockStones, 1, 1),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockStones, 1, 5),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockStones, 1, 3),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockConcretes, 1, 10),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockConcretes, 1, 9),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockConcretes, 1, 13),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockConcretes, 1, 11),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockStones, 1, 10),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockStones, 1, 9),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockStones, 1, 13),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockStones, 1, 11),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 2),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 1),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 5),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 3),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 10),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 9),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
-        addShapedRecipe(
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 13),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                new ItemStack(GregTechAPI.sBlockGranites, 1, 11),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing),
-                getModItem(BiomesOPlenty.ID, "moss", 1, 0, missing));
         addShapelessRecipe(ItemList.Color_03.get(1L), "dyeBrown");
         addShapelessRecipe(ItemList.Color_07.get(1L), "dyeLightGray");
         addShapelessRecipe(ItemList.Color_11.get(1L), "dyeYellow");
@@ -886,46 +716,6 @@ public class ScriptGregtech implements IScriptLoader {
                 "circuitBio",
                 'm',
                 ItemList.Cover_SolarPanel_ZPM.get(1L));
-
-        ExtremeCraftingManager.getInstance().addExtremeShapedOreRecipe(
-                ItemList.Spray_Color_Infinite.get(1L),
-                "---RR----",
-                "---PsR---",
-                "---RRR---",
-                "--rrrrr--",
-                "--If-AI--",
-                "--IF-AI--",
-                "--IWCcI--",
-                "--IbSEI--",
-                "---III---",
-                'I',
-                TGregUtils.newItemStack(Materials.Iridium, PartTypes.LargePlate, 1),
-                'R',
-                TGregUtils.newItemStack(Materials.Tungsten, PartTypes.LargePlate, 1),
-                'r',
-                TGregUtils.newItemStack(Materials.Palladium, PartTypes.LargePlate, 1),
-                'S',
-                getModItem(Minecraft.ID, "sand", 1, 0, missing),
-                'C',
-                getModItem(ThaumicBases.ID, "rainbowCactus", 1, 0, missing),
-                'E',
-                getModItem(AppliedEnergistics2.ID, "tile.BlockDenseEnergyCell", 1, 0, missing),
-                'W',
-                ItemList.AcceleratorIV.get(1L),
-                'F',
-                "fenceWood",
-                'f',
-                getModItem(OpenBlocks.ID, "fan", 1, 0, missing),
-                'c',
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 36),
-                'A',
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 300, missing),
-                's',
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 57),
-                'P',
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 320, missing),
-                'b',
-                ItemList.Battery_Buffer_3by3_IV.get(1L));
 
         GTValues.RA.stdBuilder().itemInputs(getModItem(TinkerConstruct.ID, "strangeFood", 1, 0, missing))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.RawRubber, 2L)).duration(15 * SECONDS)
@@ -1366,14 +1156,6 @@ public class ScriptGregtech implements IScriptLoader {
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Bronze, 4L)).duration(10 * SECONDS)
                 .eut(16).addTo(alloySmelterRecipes);
         GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(ThaumicBases.ID, "resource", 9, 0, missing), ItemList.Shape_Mold_Ingot.get(0L))
-                .itemOutputs(getModItem(ThaumicBases.ID, "resource", 1, 1, missing)).duration(10 * SECONDS).eut(16)
-                .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(ThaumicBases.ID, "resource", 1, 1, missing), ItemList.Shape_Mold_Nugget.get(0L))
-                .itemOutputs(getModItem(ThaumicBases.ID, "resource", 9, 0, missing)).duration(10 * SECONDS).eut(16)
-                .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder()
                 .itemInputs(
                         GTOreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1L),
                         ItemList.Shape_Mold_Block.get(0L))
@@ -1391,78 +1173,6 @@ public class ScriptGregtech implements IScriptLoader {
                         ItemList.Shape_Mold_Block.get(0L))
                 .itemOutputs(getModItem(Minecraft.ID, "glass", 1, 0, missing)).duration(10 * SECONDS).eut(16)
                 .addTo(alloySmelterRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedAir, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 0, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedAir, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 0, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedAir, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 0, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedFire, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 1, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedFire, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 1, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedFire, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 1, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedWater, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 2, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedWater, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 2, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedWater, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 2, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEarth, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 3, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEarth, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 3, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEarth, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 3, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedOrder, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 4, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedOrder, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 4, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedOrder, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 4, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEntropy, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 5, missing)).outputChances(8000)
-                .fluidInputs(FluidRegistry.getFluidStack("water", 200)).duration(1 * MINUTES + 40 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEntropy, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 5, missing)).outputChances(9000)
-                .fluidInputs(FluidRegistry.getFluidStack("ic2distilledwater", 100)).duration(1 * MINUTES + 15 * SECONDS)
-                .eut(30).addTo(autoclaveRecipes);
-        GTValues.RA.stdBuilder().itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedEntropy, 1L))
-                .itemOutputs(getModItem(Thaumcraft.ID, "ItemShard", 1, 5, missing)).outputChances(10000)
-                .fluidInputs(FluidRegistry.getFluidStack("molten.void", 36)).duration(50 * SECONDS).eut(30)
-                .addTo(autoclaveRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(CustomItemList.PotassiumHydroxideDust.get(3L), GTUtility.getIntegratedCircuit(1))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Saltpeter, 5L))
@@ -1703,32 +1413,11 @@ public class ScriptGregtech implements IScriptLoader {
                         ItemList.Shape_Mold_Credit.get(0L))
                 .itemOutputs(CustomItemList.CoinBlank.get(1L)).duration(10 * SECONDS).eut(30)
                 .addTo(formingPressRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(Natura.ID, "barleyFood", 1, 0, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Wheat, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(PamsHarvestCraft.ID, "barleyItem", 1, 0, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Wheat, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(BiomesOPlenty.ID, "plants", 1, 6, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Wheat, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(PamsHarvestCraft.ID, "ryeItem", 1, 0, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Wheat, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(PamsHarvestCraft.ID, "oatsItem", 1, 0, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Wheat, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(Thaumcraft.ID, "blockTaint", 1, 2, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.MeatRaw, 9L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
         GTValues.RA.stdBuilder().itemInputs(getModItem(TinkerConstruct.ID, "GlassBlock", 1, 0, missing))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1L)).outputChances(10000)
                 .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
         GTValues.RA.stdBuilder().itemInputs(getModItem(TinkerConstruct.ID, "GlassPane", 1, 0, missing))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Glass, 1L)).outputChances(10000)
-                .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
-        GTValues.RA.stdBuilder().itemInputs(getModItem(BloodArsenal.ID, "glass_shard", 2, 0, missing))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1L)).outputChances(10000)
                 .duration(15 * SECONDS).eut(2).addTo(maceratorRecipes);
         GTModHandler.addSmeltingRecipe(
                 GTOreDictUnificator.get(OrePrefixes.ore, Materials.Magnetite, 1L),

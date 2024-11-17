@@ -1,7 +1,6 @@
 package com.dreammaster.scripts;
 
 import static gregtech.api.enums.Mods.GraviSuite;
-import static gregtech.api.enums.Mods.GraviSuiteNEO;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.util.GTModHandler.getModItem;
 
@@ -24,7 +23,7 @@ public class ScriptGraviSuite implements IScriptLoader {
 
     @Override
     public List<String> getDependencies() {
-        return Arrays.asList(GraviSuite.ID, GraviSuiteNEO.ID, IndustrialCraft2.ID);
+        return Arrays.asList(GraviSuite.ID, IndustrialCraft2.ID);
     }
 
     @Override
@@ -128,17 +127,6 @@ public class ScriptGraviSuite implements IScriptLoader {
                 "circuitMaster",
                 "wireGt16NiobiumTitanium",
                 "circuitMaster");
-        addShapedRecipe(
-                getModItem(GraviSuiteNEO.ID, "epicLappack", 1, 27, missing),
-                CustomItemList.IridiumAlloyItemCasing.get(1L),
-                ItemList.Energy_LapotronicOrb2.get(1L),
-                CustomItemList.IridiumAlloyItemCasing.get(1L),
-                ItemList.Energy_LapotronicOrb2.get(1L),
-                getModItem(GraviSuite.ID, "ultimateLappack", 1, wildcard, missing),
-                ItemList.Energy_LapotronicOrb2.get(1L),
-                "circuitUltimate",
-                "wireGt16SuperconductorZPM",
-                "circuitUltimate");
         addShapedRecipe(
                 getModItem(GraviSuite.ID, "advChainsaw", 1, 27, missing),
                 "screwTungstenSteel",

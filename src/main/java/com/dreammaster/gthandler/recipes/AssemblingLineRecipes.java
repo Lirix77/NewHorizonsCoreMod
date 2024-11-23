@@ -370,7 +370,7 @@ public class AssemblingLineRecipes implements Runnable {
                             ItemList.Circuit_Chip_QPIC.get(64),
                             GTOreDictUnificator.get(OrePrefixes.wireGt16, Materials.SuperconductorUEV, 4),
                             ItemList.UHV_Coil.get(64), ItemList.UHV_Coil.get(64), },
-                    new FluidStack[] { new FluidStack(FluidRegistry.getFluid("liquid helium"), 50_000),
+                    new FluidStack[] { Materials.Helium.getGas(50000),
                             Materials.SuperCoolant.getFluid(16_000), new FluidStack(solderUEV, 11_520),
                             Materials.UUMatter.getFluid(8_000) },
                     GTModHandler.getModItem(GalaxySpace.ID, "dysonswarmparts", 4, 0),

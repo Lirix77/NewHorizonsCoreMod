@@ -6262,7 +6262,7 @@ public class AssemblerRecipes implements Runnable {
                         ItemList.Electric_Pump_UIV.get(1L),
                         GTUtility.getIntegratedCircuit(9))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.SuperconductorUIV, 30L))
-                .fluidInputs(new FluidStack(FluidRegistry.getFluid("liquid helium"), 34000))
+                .fluidInputs(Materials.Helium.getGas(34000))
                 .duration(2 * MINUTES + 40 * SECONDS).eut(TierEU.RECIPE_UIV).addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()

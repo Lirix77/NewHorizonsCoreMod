@@ -27,7 +27,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.dreammaster.forestry.ForestryHelper;
 import com.dreammaster.gthandler.CustomItemList;
-import com.dreammaster.thaumcraft.TCHelper;
 
 import forestry.api.recipes.RecipeManagers;
 import gregtech.api.enums.GTValues;
@@ -38,11 +37,6 @@ import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTRecipeConstants;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.xmod.bop.blocks.BOPBlockRegistrator;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.research.ResearchItem;
-import thaumcraft.api.research.ResearchPage;
 
 public class ScriptForestry implements IScriptLoader {
 
@@ -231,74 +225,6 @@ public class ScriptForestry implements IScriptLoader {
                 .itemOutputs(getModItem(Forestry.ID, "waxCast", 1, 0, missing)).duration(5 * SECONDS).eut(30)
                 .addTo(formingPressRecipes);
 
-        new ResearchItem(
-                "PROVENFRAME",
-                "MAGICBEES",
-                new AspectList().add(Aspect.getAspect("praecantatio"), 15).add(Aspect.getAspect("fabrico"), 12)
-                        .add(Aspect.getAspect("cognitio"), 9).add(Aspect.getAspect("potentia"), 6),
-                7,
-                0,
-                3,
-                getModItem(Forestry.ID, "frameProven", 1, 0, missing)).setParents("MB_EssenceArmor").setConcealed()
-                        .setPages(new ResearchPage("Forestry.research_page.PROVENFRAME")).registerResearchItem();
-        ThaumcraftApi.addArcaneCraftingRecipe(
-                "PROVENFRAME",
-                getModItem(Forestry.ID, "frameProven", 1, 0, missing),
-                new AspectList().add(Aspect.getAspect("ordo"), 15).add(Aspect.getAspect("terra"), 15)
-                        .add(Aspect.getAspect("aer"), 15).add(Aspect.getAspect("perditio"), 15)
-                        .add(Aspect.getAspect("ignis"), 15).add(Aspect.getAspect("aqua"), 15),
-                "abc",
-                "def",
-                "ghi",
-                'a',
-                GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L),
-                'b',
-                getModItem(Forestry.ID, "honeydew", 1, 0, missing),
-                'c',
-                GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L),
-                'd',
-                getModItem(Forestry.ID, "propolis", 1, 0, missing),
-                'e',
-                getModItem(Forestry.ID, "frameImpregnated", 1, 0, missing),
-                'f',
-                getModItem(Forestry.ID, "propolis", 1, 3, missing),
-                'g',
-                GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L),
-                'h',
-                getModItem(Forestry.ID, "royalJelly", 1, 0, missing),
-                'i',
-                GTOreDictUnificator.get(OrePrefixes.screw, Materials.Steel, 1L));
-        TCHelper.addResearchPage(
-                "PROVENFRAME",
-                new ResearchPage(TCHelper.findArcaneRecipe(getModItem(Forestry.ID, "frameProven", 1, 0, missing))));
-        new ResearchItem(
-                "PROVENGRAFTER",
-                "MAGICBEES",
-                new AspectList().add(Aspect.getAspect("instrumentum"), 15).add(Aspect.getAspect("permutatio"), 12)
-                        .add(Aspect.getAspect("metallum"), 9).add(Aspect.getAspect("arbor"), 6),
-                -5,
-                -3,
-                3,
-                getModItem(Forestry.ID, "grafterProven", 1, 0, missing)).setParents("MB_Scoop").setConcealed()
-                        .setPages(new ResearchPage("Forestry.research_page.PROVENGRAFTER")).registerResearchItem();
-        ThaumcraftApi.addInfusionCraftingRecipe(
-                "PROVENGRAFTER",
-                getModItem(Forestry.ID, "grafterProven", 1, 0, missing),
-                3,
-                new AspectList().add(Aspect.getAspect("instrumentum"), 25).add(Aspect.getAspect("permutatio"), 25)
-                        .add(Aspect.getAspect("metallum"), 20).add(Aspect.getAspect("arbor"), 10),
-                getModItem(Forestry.ID, "grafter", 1, 0, missing),
-                new ItemStack[] { getModItem(Minecraft.ID, "sapling", 1, 1, missing),
-                        getModItem(Minecraft.ID, "sapling", 1, 2, missing),
-                        getModItem(Forestry.ID, "pollen", 1, 0, missing),
-                        getModItem(Minecraft.ID, "sapling", 1, 3, missing),
-                        getModItem(Minecraft.ID, "sapling", 1, 4, missing),
-                        getModItem(Minecraft.ID, "sapling", 1, 5, missing),
-                        getModItem(Forestry.ID, "pollen", 1, 1, missing),
-                        getModItem(Minecraft.ID, "sapling", 1, 0, missing), });
-        TCHelper.addResearchPage(
-                "PROVENGRAFTER",
-                new ResearchPage(TCHelper.findInfusionRecipe(getModItem(Forestry.ID, "grafterProven", 1, 0, missing))));
     }
 
     private void craftingRecipes() {

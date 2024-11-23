@@ -54,17 +54,17 @@ public class FluidCannerRecipes implements Runnable {
         if (GalaxySpace.isModLoaded()) {
             GTValues.RA.stdBuilder().itemInputs(CustomItemList.TenKCell.get(1L))
                     .itemOutputs(ItemList.Reactor_Coolant_He_1.get(1L))
-                    .fluidInputs(new FluidStack(FluidRegistry.getFluid("liquid helium"), 1000)).duration(16 * TICKS)
+                    .fluidInputs(Materials.Helium.getGas(1000)).duration(16 * TICKS)
                     .eut(1).addTo(fluidCannerRecipes);
 
             GTValues.RA.stdBuilder().itemInputs(CustomItemList.ThirtyKCell.get(1L))
                     .itemOutputs(ItemList.Reactor_Coolant_He_3.get(1L))
-                    .fluidInputs(new FluidStack(FluidRegistry.getFluid("liquid helium"), 3000))
+                    .fluidInputs(Materials.Helium.getGas(3000))
                     .duration(2 * SECONDS + 8 * TICKS).eut(1).addTo(fluidCannerRecipes);
 
             GTValues.RA.stdBuilder().itemInputs(CustomItemList.SixtyKCell.get(1L))
                     .itemOutputs(ItemList.Reactor_Coolant_He_6.get(1L))
-                    .fluidInputs(new FluidStack(FluidRegistry.getFluid("liquid helium"), 6000))
+                    .fluidInputs(Materials.Helium.getGas(6000))
                     .duration(4 * SECONDS + 16 * TICKS).eut(1).addTo(fluidCannerRecipes);
         }
     }

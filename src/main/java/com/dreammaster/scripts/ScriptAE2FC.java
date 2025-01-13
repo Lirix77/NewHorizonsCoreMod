@@ -2,6 +2,8 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.enums.Mods.AE2FluidCraft;
 import static gregtech.api.enums.Mods.AppliedEnergistics2;
+import static gregtech.api.enums.Mods.Avaritia;
+import static gregtech.api.enums.Mods.EternalSingularity;
 import static gregtech.api.enums.Mods.GTPlusPlus;
 import static gregtech.api.enums.Mods.GoodGenerator;
 import static gregtech.api.enums.Mods.Minecraft;
@@ -16,9 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -51,7 +55,8 @@ public class ScriptAE2FC implements IScriptLoader {
                 AE2FluidCraft.ID,
                 AppliedEnergistics2.ID,
                 GoodGenerator.ID,
-                GTPlusPlus.ID);
+                GTPlusPlus.ID,
+                EternalSingularity.ID);
     }
 
     @Override
@@ -103,14 +108,14 @@ public class ScriptAE2FC implements IScriptLoader {
                 "item.EngineeringProcessorFluidEmeraldCore",
                 1);
         final ItemStack FISH = getModItem(Minecraft.ID, "fish", 1, 0);
-        final ItemStack CELL_1 = getModItem(AE2FluidCraft.ID, "fluid_storage1", 1, 0);
-        final ItemStack CELL_4 = getModItem(AE2FluidCraft.ID, "fluid_storage4", 1, 0);
-        final ItemStack CELL_16 = getModItem(AE2FluidCraft.ID, "fluid_storage16", 1, 0);
-        final ItemStack CELL_64 = getModItem(AE2FluidCraft.ID, "fluid_storage64", 1, 0);
-        final ItemStack CELL_256 = getModItem(AE2FluidCraft.ID, "fluid_storage256", 1, 0);
-        final ItemStack CELL_1024 = getModItem(AE2FluidCraft.ID, "fluid_storage1024", 1, 0);
-        final ItemStack CELL_4096 = getModItem(AE2FluidCraft.ID, "fluid_storage4096", 1, 0);
-        final ItemStack CELL_16384 = getModItem(AE2FluidCraft.ID, "fluid_storage16384", 1, 0);
+        //final ItemStack CELL_1 = getModItem(AE2FluidCraft.ID, "fluid_storage1", 1, 0);
+        //final ItemStack CELL_4 = getModItem(AE2FluidCraft.ID, "fluid_storage4", 1, 0);
+        //final ItemStack CELL_16 = getModItem(AE2FluidCraft.ID, "fluid_storage16", 1, 0);
+        //final ItemStack CELL_64 = getModItem(AE2FluidCraft.ID, "fluid_storage64", 1, 0);
+        //final ItemStack CELL_256 = getModItem(AE2FluidCraft.ID, "fluid_storage256", 1, 0);
+        //final ItemStack CELL_1024 = getModItem(AE2FluidCraft.ID, "fluid_storage1024", 1, 0);
+        //final ItemStack CELL_4096 = getModItem(AE2FluidCraft.ID, "fluid_storage4096", 1, 0);
+        //final ItemStack CELL_16384 = getModItem(AE2FluidCraft.ID, "fluid_storage16384", 1, 0);
         final ItemStack CELL_1M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage1", 1, 0);
         final ItemStack CELL_4M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage4", 1, 0);
         final ItemStack CELL_16M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage16", 1, 0);
@@ -157,26 +162,35 @@ public class ScriptAE2FC implements IScriptLoader {
         final ItemStack AE2FC_LEVEL_WIRELESS = getModItem(AE2FluidCraft.ID, "wireless_level_terminal", 1, 0);
         final ItemStack AE2FC_QUANTUM_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.quantum", 1, 0);
         final ItemStack AE2FC_SINGULARITY_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.singularity", 1, 0);
+        final ItemStack AE2FC_FLUID_VOID_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.void", 1, 0);
+        final ItemStack AE2_SINGULARITY = getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 47);
         final ItemStack AE2FC_FLUID_STORAGE_HOUSING = getModItem(AE2FluidCraft.ID, "fluid_storage_housing", 1, 0);
         final ItemStack AE2_P2P_ME = getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 460);
         final ItemStack AE2FC_INTERFACE_P2P = getModItem(AE2FluidCraft.ID, "part_fluid_p2p_interface", 1);
         final ItemStack AE2_ADVANCED_HOUSING = getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 61);
         final ItemStack T7_YOT = new ItemStack(Loaders.yottaFluidTankCell, 1, 6);
+        final ItemStack AE2FC_INFINITY_WATER_STORAGE_CELL = getModItem(
+                AE2FluidCraft.ID,
+                "fluid_storage.infinity.water",
+                1,
+                0);
         final ItemStack AE2FC_ADVANCED_FLUID_STORAGE_HOUSING = getModItem(
                 AE2FluidCraft.ID,
                 "fluid_storage_housing",
                 1,
                 1);
-        final ItemStack AE2FC_MULTI_FLUID_STORAGE_HOUSING = getModItem(AE2FluidCraft.ID, "fluid_storage_housing", 1, 2);
-        final ItemStack AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING = getModItem(
-                AE2FluidCraft.ID,
-                "fluid_storage_housing",
+        //final ItemStack AE2FC_MULTI_FLUID_STORAGE_HOUSING = getModItem(AE2FluidCraft.ID, "fluid_storage_housing", 1, 2);
+        //final ItemStack AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING = getModItem(AE2FluidCraft.ID, "fluid_storage_housing", 1, 3);
+        final ItemStack AE2_ADV_CARD = getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 28);
+        final ItemStack AE2_NEUTRONIUM_ENERGY_CELL = getModItem(
+                AppliedEnergistics2.ID,
+                "tile.BlockCreativeEnergyCell",
                 1,
-                3);
+                0);
+        final ItemStack AE2FC_ENERGY_CARD = getModItem(AE2FluidCraft.ID, "energy_card", 1, 0);
         ItemStack[] mCells = new ItemStack[] { CELL_1M, CELL_4M, CELL_16M, CELL_64M, CELL_256M, CELL_1024M, CELL_4096M,
                 CELL_16384M };
-        ItemStack[] sCells = new ItemStack[] { CELL_1, CELL_4, CELL_16, CELL_64, CELL_256, CELL_1024, CELL_4096,
-                CELL_16384 };
+        //ItemStack[] sCells = new ItemStack[] { CELL_1, CELL_4, CELL_16, CELL_64, CELL_256, CELL_1024, CELL_4096, CELL_16384 };
         ItemStack[] components = new ItemStack[] { COMPONENT_1, COMPONENT_4, COMPONENT_16, COMPONENT_64, COMPONENT_256,
                 COMPONENT_1024, COMPONENT_4096, COMPONENT_16384 };
 
@@ -194,39 +208,7 @@ public class ScriptAE2FC implements IScriptLoader {
                 RecipeBits.BUFFERED,
                 new Object[] { "dCW", "S-S", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
                         "plateStainlessSteel", 'A', "plateAluminium" });
-        for (Map.Entry<ItemStack, ItemStack> entry : new HashMap<ItemStack, ItemStack>() {
-
-            {
-                put(CELL_1, COMPONENT_1);
-                put(CELL_4, COMPONENT_4);
-                put(CELL_16, COMPONENT_16);
-                put(CELL_64, COMPONENT_64);
-            }
-        }.entrySet()) {
-            GTModHandler.addCraftingRecipe(
-                    entry.getKey(),
-                    RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
-                    new Object[] { "hCW", "SKS", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            "plateStainlessSteel", 'A', "plateAluminium", 'K', entry.getValue() });
-            GTModHandler.addCraftingRecipe(
-                    entry.getKey(),
-                    RecipeBits.BUFFERED,
-                    new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            "plateStainlessSteel", 'A', "plateAluminium", 'K', entry.getValue() });
-            addShapelessRecipe(entry.getKey(), AE2FC_FLUID_STORAGE_HOUSING, entry.getValue());
-        }
-
         // AE2FC_MULTI_FLUID_STORAGE_HOUSING
-        GTModHandler.addCraftingRecipe(
-                AE2FC_MULTI_FLUID_STORAGE_HOUSING,
-                RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
-                new Object[] { "hCW", "S-S", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                        "plateTungstenSteel", 'A', "plateStainlessSteel" });
-        GTModHandler.addCraftingRecipe(
-                AE2FC_MULTI_FLUID_STORAGE_HOUSING,
-                RecipeBits.BUFFERED,
-                new Object[] { "dCW", "S-S", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                        "plateTungstenSteel", 'A', "plateStainlessSteel" });
         for (Map.Entry<ItemStack, ItemStack> entry : new HashMap<ItemStack, ItemStack>() {
 
             {
@@ -246,7 +228,7 @@ public class ScriptAE2FC implements IScriptLoader {
                     RecipeBits.BUFFERED,
                     new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
                             "plateTungstenSteel", 'A', "plateStainlessSteel", 'K', entry.getValue() });
-            addShapelessRecipe(entry.getKey(), AE2FC_MULTI_FLUID_STORAGE_HOUSING, entry.getValue());
+            addShapelessRecipe(entry.getKey(), AE2FC_FLUID_STORAGE_HOUSING, entry.getValue());
         }
 
         // AE2FC_ADVANCED_FLUID_STORAGE_HOUSING
@@ -260,39 +242,7 @@ public class ScriptAE2FC implements IScriptLoader {
                 RecipeBits.BUFFERED,
                 new Object[] { "dCW", "S-S", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
                         nitinolPlate, 'A', "plateStainlessSteel" });
-        for (Map.Entry<ItemStack, ItemStack> entry : new HashMap<ItemStack, ItemStack>() {
 
-            {
-                put(CELL_256, COMPONENT_256);
-                put(CELL_1024, COMPONENT_1024);
-                put(CELL_4096, COMPONENT_4096);
-                put(CELL_16384, COMPONENT_16384);
-            }
-        }.entrySet()) {
-            GTModHandler.addCraftingRecipe(
-                    entry.getKey(),
-                    RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
-                    new Object[] { "hCW", "SKS", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            nitinolPlate, 'A', "plateStainlessSteel", 'K', entry.getValue() });
-            GTModHandler.addCraftingRecipe(
-                    entry.getKey(),
-                    RecipeBits.BUFFERED,
-                    new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            nitinolPlate, 'A', "plateStainlessSteel", 'K', entry.getValue() });
-            addShapelessRecipe(entry.getKey(), AE2FC_ADVANCED_FLUID_STORAGE_HOUSING, entry.getValue());
-        }
-
-        // AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING
-        GTModHandler.addCraftingRecipe(
-                AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING,
-                RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
-                new Object[] { "hCW", "S-S", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S', zeronPlate,
-                        'A', "plateTungstenSteel" });
-        GTModHandler.addCraftingRecipe(
-                AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING,
-                RecipeBits.BUFFERED,
-                new Object[] { "dCW", "S-S", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S', zeronPlate,
-                        'A', "plateTungstenSteel" });
         for (Map.Entry<ItemStack, ItemStack> entry : new HashMap<ItemStack, ItemStack>() {
 
             {
@@ -312,7 +262,7 @@ public class ScriptAE2FC implements IScriptLoader {
                     RecipeBits.BUFFERED,
                     new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
                             zeronPlate, 'A', "plateTungstenSteel", 'K', entry.getValue() });
-            addShapelessRecipe(entry.getKey(), AE2FC_ADVANCED_MULTI_FLUID_STORAGE_HOUSING, entry.getValue());
+            addShapelessRecipe(entry.getKey(), AE2FC_ADVANCED_FLUID_STORAGE_HOUSING, entry.getValue());
         }
 
         // recursive components for those who want to do this weird stuff
@@ -418,6 +368,19 @@ public class ScriptAE2FC implements IScriptLoader {
                 .itemInputs(AE2_STORAGE_BUS, GTOreDictUnificator.get(OrePrefixes.plate, Materials.Lapis, 3))
                 .itemOutputs(AE2FC_FLUID_STORAGE_BUS).duration(15 * SECONDS).eut(TierEU.RECIPE_MV)
                 .addTo(assemblerRecipes);
+
+        // preconfigurated priorities for storage buses
+        ItemStack preconfiguredStorageBus = AE2FC_FLUID_STORAGE_BUS.copy();
+        for (int i = 1; i < 25; i++) {
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setInteger("priority", i);
+            preconfiguredStorageBus.setTagCompound(tag);
+            GTValues.RA.stdBuilder().itemInputs(AE2FC_FLUID_STORAGE_BUS, GTUtility.getIntegratedCircuit(i))
+                    .itemOutputs(preconfiguredStorageBus).duration(5 * SECONDS).eut(TierEU.RECIPE_HV)
+                    .addTo(circuitAssemblerRecipes);
+
+            addShapelessRecipe(preconfiguredStorageBus, AE2FC_FLUID_STORAGE_BUS, GTUtility.getIntegratedCircuit(i));
+        }
 
         // Big Long But: Components in Circuit Assembler
         // 1k ME Storage Component
@@ -878,7 +841,7 @@ public class ScriptAE2FC implements IScriptLoader {
         addShapedRecipe(
                 AE2FC_PORTABLE_CELL,
                 null,
-                CELL_1,
+                CELL_1M,
                 null,
                 LAPIS_SCREW,
                 AE2_ME_CHEST,
@@ -889,7 +852,7 @@ public class ScriptAE2FC implements IScriptLoader {
 
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        CELL_1,
+                        CELL_1M,
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.Lapis, 2),
                         AE2_ME_CHEST,
                         AE2_ENERGY_CELL)
@@ -927,6 +890,17 @@ public class ScriptAE2FC implements IScriptLoader {
         // Wireless Level Terminal
         GTValues.RA.stdBuilder().itemInputs(AE2_ITEM_WIRELESS, AE2FC_LEVEL_TERMINAL).itemOutputs(AE2FC_LEVEL_WIRELESS)
                 .duration(30 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
+
+        // DEFECTIVE SINGULARITY CELL
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTOreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2L),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.CertusQuartz, 1L),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2L),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 1L),
+                        AE2_SINGULARITY,
+                        GTUtility.getIntegratedCircuit(2))
+                .itemOutputs(AE2FC_FLUID_VOID_CELL).duration(5 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
 
         // Interface from Small to Block and opposite
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE_SMALL, AE2FC_INTERFACE);

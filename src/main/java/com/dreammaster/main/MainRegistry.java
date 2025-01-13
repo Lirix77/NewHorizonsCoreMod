@@ -1,7 +1,9 @@
 package com.dreammaster.main;
 
+import static gregtech.api.enums.Dyes.MACHINE_METAL;
 import static gregtech.api.enums.Mods.Avaritia;
 import static gregtech.api.enums.Mods.BloodMagic;
+import static gregtech.api.enums.Mods.DetravScannerMod;
 import static gregtech.api.enums.Mods.Railcraft;
 import static gregtech.api.enums.Mods.SGCraft;
 import static gregtech.api.enums.Mods.Thaumcraft;
@@ -9,17 +11,21 @@ import static gregtech.api.enums.Mods.TinkerConstruct;
 import static gregtech.api.enums.Mods.TwilightForest;
 import static gregtech.api.enums.Mods.Witchery;
 import static gregtech.api.enums.Mods.ZTones;
+import static gregtech.api.recipe.RecipeMaps.compressorRecipes;
+import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 
 import java.io.File;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 
+import com.dreammaster.NHTradeHandler.NHTradeHandler;
 import com.dreammaster.TwilightForest.TF_Loot_Chests;
 import com.dreammaster.amazingtrophies.AchievementHandler;
 import com.dreammaster.bartworksHandler.BWGlassAdder;
@@ -37,6 +43,7 @@ import com.dreammaster.command.CustomFuelsCommand;
 import com.dreammaster.command.HazardousItemsCommand;
 import com.dreammaster.config.CoreModConfig;
 import com.dreammaster.creativetab.ModTabList;
+import com.dreammaster.detrav.ScannerTools;
 import com.dreammaster.fluids.FluidList;
 import com.dreammaster.gthandler.CoreMod_PCBFactory_MaterialLoader;
 import com.dreammaster.gthandler.GT_CoreModSupport;
@@ -75,6 +82,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
 import eu.usrv.yamcore.YAMCore;
 import eu.usrv.yamcore.auxiliary.IngameErrorLog;
@@ -86,6 +94,7 @@ import eu.usrv.yamcore.fluids.ModFluidManager;
 import eu.usrv.yamcore.items.ModItemManager;
 import gregtech.GTMod;
 import gregtech.api.GregTechAPI;
+import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
 import gregtech.api.util.GTLanguageManager;
 import gregtech.common.items.MetaGeneratedItem01;
@@ -130,7 +139,6 @@ public class MainRegistry {
     }
 
     public MainRegistry() {
-        //if (DetravScannerMod.isModLoaded()) GregTechAPI.sAfterGTPreload.add(ScannerTools::new);
     }
 
     @Mod.EventHandler
@@ -138,6 +146,8 @@ public class MainRegistry {
         Logger.setDebugOutput(true);
 
         Rnd = new Random(System.currentTimeMillis());
+
+        if (DetravScannerMod.isModLoaded()) GregTechAPI.sAfterGTPreload.add(ScannerTools::new);
 
         // ------------------------------------------------------------
         // Init coremod config file. Create it if it's not there
@@ -163,6 +173,16 @@ public class MainRegistry {
         File tFile = new File(new File(PreEvent.getModConfigurationDirectory(), "GregTech"), "GregTech.cfg");
         Configuration tMainConfig = new Configuration(tFile);
         tMainConfig.load();
+
+        GregTechAPI.sUseMachineMetal = tMainConfig.get("machines", "use_machine_metal_tint", true).getBoolean(true);
+        if (GregTechAPI.sUseMachineMetal) {
+            // use default in GregTech Dyes enum.
+        } else {
+            // Override MACHINE_METAL dye color with white
+            MACHINE_METAL.mRGBa[0] = 255;
+            MACHINE_METAL.mRGBa[1] = 255;
+            MACHINE_METAL.mRGBa[2] = 255;
+        }
 
         proxy.addTexturePage();
         // ------------------------------------------------------------
@@ -318,6 +338,7 @@ public class MainRegistry {
 
         BWGlassAdder.registerGlasses();
 
+        VillagerRegistry.instance().registerVillageTradeHandler(2, new NHTradeHandler());
     }
 
     private void InitAdditionalBlocks() {

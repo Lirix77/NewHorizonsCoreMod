@@ -23,6 +23,7 @@ import static gregtech.api.enums.Mods.DraconicEvolution;
 import static gregtech.api.enums.Mods.ElectroMagicTools;
 import static gregtech.api.enums.Mods.EnderIO;
 import static gregtech.api.enums.Mods.EnderZoo;
+import static gregtech.api.enums.Mods.EtFuturumRequiem;
 import static gregtech.api.enums.Mods.EternalSingularity;
 import static gregtech.api.enums.Mods.ExtraBees;
 import static gregtech.api.enums.Mods.ExtraTrees;
@@ -111,32 +112,24 @@ import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 
 public class RecipeRemover {
 
-    private static boolean bufferingRecipes = true;
-
-    @SuppressWarnings("unchecked")
-    private static final ArrayList<IRecipe> tList = (ArrayList<IRecipe>) CraftingManager.getInstance().getRecipeList();
-
-    private static final HashMap<GTUtility.ItemId, List<Function<IRecipe, Boolean>>> bufferMap = new HashMap<>();
+    private static HashMap<GTUtility.ItemId, List<Function<IRecipe, Boolean>>> bufferMap;
 
     private static void addToBuffer(HashSet<GTUtility.ItemId> outputs, Function<IRecipe, Boolean> whenToRemove) {
         for (GTUtility.ItemId output : outputs) {
             bufferMap.computeIfAbsent(output, o -> new ArrayList<>()).add(whenToRemove);
         }
-        if (!bufferingRecipes) stopBuffering();
     }
 
-    private static void stopBuffering() {
-        int i = tList.size();
-        tList.removeIf(r -> {
+    private static void flushBuffer() {
+        final ArrayList<IRecipe> list = (ArrayList<IRecipe>) CraftingManager.getInstance().getRecipeList();
+        int i = list.size();
+        list.removeIf(r -> {
             ItemStack rCopy = r.getRecipeOutput();
             if (rCopy == null) {
                 return false;
             }
             if (rCopy.getItem() == null) {
                 MainRegistry.Logger.warn("Someone is adding recipes with null items!");
-                for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
-                    MainRegistry.Logger.warn(element.toString());
-                }
                 return true;
             }
             if (rCopy.stackTagCompound != null) {
@@ -155,8 +148,7 @@ public class RecipeRemover {
             }
             return false;
         });
-        MainRegistry.Logger.info("Removed " + (i - tList.size()) + " recipes!");
-        bufferMap.clear();
+        MainRegistry.Logger.info("Removed " + (i - list.size()) + " recipes!");
     }
 
     private static HashSet<GTUtility.ItemId> getItemsHashed(Object item, boolean includeWildcardVariants) {
@@ -200,7 +192,7 @@ public class RecipeRemover {
      *
      * @author kuba6000
      */
-    static void removeRecipeShapelessDelayed(Object aOutput, Object... aRecipe) {
+    private static void removeRecipeShapelessDelayed(Object aOutput, Object... aRecipe) {
         ArrayList<Object> aRecipeList = new ArrayList<>(Arrays.asList(aRecipe));
         addToBuffer(getItemsHashed(aOutput, false), r -> {
             if (!(r instanceof ShapelessOreRecipe) && !(r instanceof ShapelessRecipes)) return false;
@@ -252,7 +244,7 @@ public class RecipeRemover {
      *
      * @author kuba6000
      */
-    static void removeRecipeShapedDelayed(Object aOutput, Object[] row1, Object[] row2, Object[] row3) {
+    private static void removeRecipeShapedDelayed(Object aOutput, Object[] row1, Object[] row2, Object[] row3) {
         if (recipeWidthField == null) {
             try {
                 recipeWidthField = ShapedOreRecipe.class.getDeclaredField("width");
@@ -316,7 +308,7 @@ public class RecipeRemover {
      *
      * @author kuba6000
      */
-    static void removeRecipeShapedDelayed(Object aOutput) {
+    private static void removeRecipeShapedDelayed(Object aOutput) {
         addToBuffer(getItemsHashed(aOutput, false), r -> r instanceof ShapedOreRecipe || r instanceof ShapedRecipes);
     }
 
@@ -325,22 +317,34 @@ public class RecipeRemover {
      *
      * @author kuba6000
      */
-    static void removeRecipeByOutputDelayed(Object aOutput) {
+    private static void removeRecipeByOutputDelayed(Object aOutput) {
         addToBuffer(getItemsHashed(aOutput, false), r -> true);
     }
 
     public static void run() {
-
+        bufferMap = new HashMap<>();
         final long timeStart = System.currentTimeMillis();
+
+        if (EtFuturumRequiem.isModLoaded()) {
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "blast_furnace", 1, 0));
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "wooden_armorstand", 1, 0));
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "smoker", 1, 0));
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "end_crystal", 1, 0));
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "cherry_trapdoor", 1, 0));
+            removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "smithing_table", 1, 0));
+            for (int i = 0; i < 16; i++) {
+                removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "banner", 1, i));
+            }
+            for (int i = 0; i < 9; i++) {
+                removeRecipeByOutputDelayed(getModItem(EtFuturumRequiem.ID, "shulker_box_upgrade", 1, i));
+            }
+        }
 
         // AUTOGENERATED FROM SCRIPTS
 
         GTModHandler.removeFurnaceSmelting(GTOreDictUnificator.get(OrePrefixes.plate, Materials.Sunnarium, 1L));
         GTModHandler.removeFurnaceSmelting(GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Sunnarium, 1L));
-        GTModHandler
-                .removeFurnaceSmelting(GTOreDictUnificator.get(OrePrefixes.toolHeadShovel, Materials.Sunnarium, 1L));
-        GTModHandler.removeFurnaceSmelting(
-                GTOreDictUnificator.get(OrePrefixes.toolHeadUniversalSpade, Materials.Sunnarium, 1L));
+
         GTModHandler.removeFurnaceSmelting(GTOreDictUnificator.get(OrePrefixes.spring, Materials.Sunnarium, 1L));
         GTModHandler.removeFurnaceSmelting(GTOreDictUnificator.get(OrePrefixes.gearGtSmall, Materials.Sunnarium, 1L));
         GTModHandler.removeFurnaceSmelting(getModItem(Backpack.ID, "boundLeather", 1, wildcard, missing));
@@ -1176,11 +1180,6 @@ public class RecipeRemover {
         removeRecipeByOutputDelayed(ItemList.Emitter_UHV.get(1L));
         removeRecipeByOutputDelayed(ItemList.Sensor_UHV.get(1L));
         removeRecipeByOutputDelayed(ItemList.Field_Generator_UHV.get(1L));
-        removeRecipeByOutputDelayed(GregtechItemList.Super_Chest_LV.get(1));
-        removeRecipeByOutputDelayed(GregtechItemList.Super_Chest_MV.get(1));
-        removeRecipeByOutputDelayed(GregtechItemList.Super_Chest_HV.get(1));
-        removeRecipeByOutputDelayed(GregtechItemList.Super_Chest_EV.get(1));
-        removeRecipeByOutputDelayed(GregtechItemList.Super_Chest_IV.get(1));
         removeRecipeByOutputDelayed(GregtechItemList.Industrial_WireFactory.get(1));
         removeRecipeByOutputDelayed(GregtechItemList.Boiler_Advanced_LV.get(1));
         removeRecipeByOutputDelayed(new ItemStack(ModItems.itemBoilerChassis, 1, 0));
@@ -1254,11 +1253,6 @@ public class RecipeRemover {
         removeRecipeByOutputDelayed(getModItem(GraviSuite.ID, "graviTool", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(GraviSuite.ID, "ultimateLappack", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(GraviSuiteNEO.ID, "epicLappack", 1, wildcard, missing));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadSword, Materials.Diamond, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadPickaxe, Materials.Diamond, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadShovel, Materials.Diamond, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadAxe, Materials.Diamond, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadHoe, Materials.Diamond, 1L));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "itemRTGPellet", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "itemOreIridium", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(ThaumicBases.ID, "resource", 1, 0, missing));
@@ -1572,14 +1566,7 @@ public class RecipeRemover {
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "blockMiningPipe", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "blockGenerator", 1, 5, missing));
         removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadAxe, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadHoe, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadSense, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadPickaxe, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadPlow, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadSword, Materials.Iridium, 1L));
         removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadSaw, Materials.Iridium, 1L));
-        removeRecipeByOutputDelayed(GTOreDictUnificator.get(OrePrefixes.toolHeadShovel, Materials.Iridium, 1L));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "itemBatLamaCrystal", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "itemDust2", 1, 2, missing));
         removeRecipeByOutputDelayed(getModItem(IndustrialCraft2.ID, "itemPartCFPowder", 1, 0, missing));
@@ -1803,6 +1790,11 @@ public class RecipeRemover {
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "brewing_stand", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "clock", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "compass", 1, 0, missing));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "stone_sword", 1, 0, missing));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "stone_shovel", 1, 0, missing));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "stone_pickaxe", 1, 0, missing));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "stone_axe", 1, 0, missing));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "stone_hoe", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "diamond_sword", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "diamond_shovel", 1, 0, missing));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "diamond_pickaxe", 1, 0, missing));
@@ -3358,9 +3350,8 @@ public class RecipeRemover {
                 new Object[0],
                 new Object[0]);
 
-        stopBuffering();
-        bufferingRecipes = false;
-
+        flushBuffer();
+        bufferMap = null;
         final long timeToLoad = System.currentTimeMillis() - timeStart;
         MainRegistry.Logger.info("Recipes removal took " + timeToLoad + " ms.");
     }

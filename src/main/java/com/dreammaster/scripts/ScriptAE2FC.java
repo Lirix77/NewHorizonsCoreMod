@@ -107,15 +107,6 @@ public class ScriptAE2FC implements IScriptLoader {
                 NewHorizonsCoreMod.ID,
                 "item.EngineeringProcessorFluidEmeraldCore",
                 1);
-        final ItemStack FISH = getModItem(Minecraft.ID, "fish", 1, 0);
-        //final ItemStack CELL_1 = getModItem(AE2FluidCraft.ID, "fluid_storage1", 1, 0);
-        //final ItemStack CELL_4 = getModItem(AE2FluidCraft.ID, "fluid_storage4", 1, 0);
-        //final ItemStack CELL_16 = getModItem(AE2FluidCraft.ID, "fluid_storage16", 1, 0);
-        //final ItemStack CELL_64 = getModItem(AE2FluidCraft.ID, "fluid_storage64", 1, 0);
-        //final ItemStack CELL_256 = getModItem(AE2FluidCraft.ID, "fluid_storage256", 1, 0);
-        //final ItemStack CELL_1024 = getModItem(AE2FluidCraft.ID, "fluid_storage1024", 1, 0);
-        //final ItemStack CELL_4096 = getModItem(AE2FluidCraft.ID, "fluid_storage4096", 1, 0);
-        //final ItemStack CELL_16384 = getModItem(AE2FluidCraft.ID, "fluid_storage16384", 1, 0);
         final ItemStack CELL_1M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage1", 1, 0);
         final ItemStack CELL_4M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage4", 1, 0);
         final ItemStack CELL_16M = getModItem(AE2FluidCraft.ID, "multi_fluid_storage16", 1, 0);
@@ -835,8 +826,6 @@ public class ScriptAE2FC implements IScriptLoader {
                 LAPIS_PLATE,
                 AE2FC_LEVEL_MAIN,
                 LAPIS_PLATE);
-        // Walrus
-        addShapedRecipe(AE2FC_WALRUS, FISH, FISH, FISH, FISH, null, FISH, FISH, FISH, FISH);
         // Fluid Portable Cell
         addShapedRecipe(
                 AE2FC_PORTABLE_CELL,

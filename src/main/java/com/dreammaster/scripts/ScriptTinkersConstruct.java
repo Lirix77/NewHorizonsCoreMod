@@ -6,7 +6,6 @@ import static gregtech.api.enums.Mods.ExtraTrees;
 import static gregtech.api.enums.Mods.ExtraUtilities;
 import static gregtech.api.enums.Mods.Forestry;
 import static gregtech.api.enums.Mods.ForgeMicroblocks;
-import static gregtech.api.enums.Mods.GalaxySpace;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.Mantle;
 import static gregtech.api.enums.Mods.Minecraft;
@@ -57,12 +56,10 @@ public class ScriptTinkersConstruct implements IScriptLoader {
     public List<String> getDependencies() {
         return Arrays.asList(
                 TinkerConstruct.ID,
-                Mantle.ID,
                 ExtraTrees.ID,
                 ExtraUtilities.ID,
                 Forestry.ID,
                 ForgeMicroblocks.ID,
-                GalaxySpace.ID,
                 IndustrialCraft2.ID,
                 Railcraft.ID);
     }
@@ -1643,7 +1640,6 @@ public class ScriptTinkersConstruct implements IScriptLoader {
         TConstructHelper.removeBasinRecipe(getModItem(TinkerConstruct.ID, "MetalBlock", 1, 10, missing));
         TConstructHelper.removeMeltingRecipe(new ItemStack(GregTechAPI.sBlockOres1, 1, 33));
         TConstructHelper.removeMeltingRecipe(getModItem(TinkerConstruct.ID, "SearedBrick", 1, 1, missing));
-        TConstructHelper.removeMeltingRecipe(getModItem(GalaxySpace.ID, "phobosblocks", 1, 4, missing));
         TConstructHelper.removeMeltingRecipe(getModItem(TinkerConstruct.ID, "GravelOre", 1, 5, missing));
         TConstructHelper.removeMeltingRecipe(getModItem(TinkerConstruct.ID, "materials", 1, 39, missing));
         TConstructHelper.removeMeltingRecipe(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Cobalt, 1L));
@@ -1682,7 +1678,6 @@ public class ScriptTinkersConstruct implements IScriptLoader {
         TConstructHelper.removeMeltingRecipe(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Cobalt, 1L));
         TConstructHelper.removeMeltingRecipe(getModItem(TinkerConstruct.ID, "materials", 1, 3, missing));
         TConstructHelper.removeMeltingRecipe(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Cobalt, 1L));
-        TConstructHelper.removeMeltingRecipe(getModItem(GalaxySpace.ID, "item.Ingots", 1, 1, missing));
         TConstructHelper.removeMeltingRecipe(new ItemStack(GregTechAPI.sBlockMetal2, 1, 5));
         TConstructHelper.removeBasinRecipe(getModItem(TinkerConstruct.ID, "MetalBlock", 1, 0, missing));
         TConstructHelper.removeMeltingRecipe(getModItem(Minecraft.ID, "sand", 1, 0, missing));

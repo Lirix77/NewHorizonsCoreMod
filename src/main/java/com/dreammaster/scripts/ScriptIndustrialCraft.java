@@ -50,17 +50,11 @@ public class ScriptIndustrialCraft implements IScriptLoader {
     @Override
     public List<String> getDependencies() {
         return Arrays.asList(
-                BiomesOPlenty.ID,
-                BuildCraftFactory.ID,
                 Forestry.ID,
                 GTPlusPlus.ID,
                 IndustrialCraft2.ID,
-                Natura.ID,
                 Railcraft.ID,
-                Thaumcraft.ID,
-                TinkerConstruct.ID,
-                TinkersGregworks.ID,
-                TwilightForest.ID);
+                TinkerConstruct.ID);
     }
 
     @Override
@@ -309,17 +303,6 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "craftingToolWrench",
                 getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 9, missing),
                 new ItemStack(IC2Items.shaft_Material_2.getItem(), 1, 0));
-        addShapedRecipe(
-                getModItem(IndustrialCraft2.ID, "blockKineticGenerator", 1, 5, missing),
-                ItemList.Electric_Motor_MV.get(1L),
-                getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 5, missing),
-                ItemList.Electric_Motor_MV.get(1L),
-                "circuitGood",
-                ItemList.Casing_HeatProof.get(1L),
-                "circuitGood",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
-                getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 5, missing),
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
         addShapelessRecipe(
                 getModItem(IndustrialCraft2.ID, "itemSteamTurbineBlade", 1, 0, missing),
                 getModItem(Railcraft.ID, "part.turbine.disk", 1, 0, missing));
@@ -658,26 +641,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 getModItem(Railcraft.ID, "armor.steel.plate", 1, 0, missing),
                 "plateAlloyAdvanced");
         addShapedRecipe(
-                getModItem(IndustrialCraft2.ID, "itemArmorCFPack", 1, 26, missing),
-                "itemCasingSteel",
-                "craftingToolHardHammer",
-                "itemCasingSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
-                "screwSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
-                "itemCasingSteel",
-                "craftingToolScrewdriver",
-                "itemCasingSteel");
-        addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "itemNanoSaber", 1, 0, missing),
                 "plateAlloyIridium",
-                createItemStack(
-                        TinkersGregworks.ID,
-                        "tGregToolPartLargeSwordBlade",
-                        1,
-                        1529,
-                        "{material:\"TungstenSteel\"}",
-                        missing),
+                "plateAlloyIridium",
                 "plateAlloyIridium",
                 "circuitMaster",
                 "batteryData",
@@ -764,9 +730,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "craftingToolScrewdriver");
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 2, missing),
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "chestIron",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "itemCasingSteel",
                 ItemList.Casing_LV.get(1L),
                 "itemCasingSteel",
@@ -811,9 +777,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "itemCasingAnyIron",
                 ItemList.Cover_SolarPanel.get(1L),
                 "itemCasingAnyIron",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 ItemList.Casing_LV.get(1L),
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "itemCasingAnyIron",
                 "circuitBasic",
                 "itemCasingAnyIron");
@@ -836,9 +802,9 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "pipeMediumSteel",
                 getModItem(IndustrialCraft2.ID, "itemRecipePart", 1, 6, missing),
                 "pipeMediumSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "circuitBasic",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
+                ItemList.Cell_Empty.get(1));
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 14, missing),
                 "itemCasingSteel",
@@ -847,17 +813,17 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 "pipeMediumSteel",
                 ItemList.Electric_Pump_MV.get(1L),
                 "pipeMediumSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "circuitBasic",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing));
+                ItemList.Cell_Empty.get(1));
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockMachine2", 1, 12, missing),
                 "itemCasingSteel",
                 ItemList.Electric_Pump_LV.get(1L),
                 "itemCasingSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "chestSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "itemCasingSteel",
                 "circuitBasic",
                 "itemCasingSteel");
@@ -947,7 +913,7 @@ public class ScriptIndustrialCraft implements IScriptLoader {
                 ItemList.Casing_Firebox_Steel.get(1L),
                 "pipeMediumSteel",
                 "itemCasingSteel",
-                getModItem(ExtraCells2.ID, "certustank", 1, 0, missing),
+                ItemList.Cell_Empty.get(1),
                 "itemCasingSteel");
         addShapedRecipe(
                 getModItem(IndustrialCraft2.ID, "blockHeatGenerator", 1, 0, missing),

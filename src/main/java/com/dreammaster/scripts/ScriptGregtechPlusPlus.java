@@ -49,7 +49,6 @@ public class ScriptGregtechPlusPlus implements IScriptLoader {
                 Mods.GTPlusPlus.ID,
                 Forestry.ID,
                 IndustrialCraft2.ID,
-                IronTanks.ID,
                 EternalSingularity.ID,
                 GregTech.ID);
     }

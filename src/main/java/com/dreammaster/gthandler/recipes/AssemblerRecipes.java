@@ -3495,7 +3495,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.Copper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(4L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(12L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3505,7 +3505,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.Copper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(4L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(12L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3515,7 +3515,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.Copper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(4L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(12L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3525,7 +3525,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.Copper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(4L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(12L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3535,7 +3535,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L)).fluidInputs(Materials.Glue.getFluid(288))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L)).fluidInputs(Materials.Glue.getFluid(288))
                 .duration(16 * SECONDS).eut(16).addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -3544,7 +3544,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L)).fluidInputs(Materials.Glue.getFluid(288))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L)).fluidInputs(Materials.Glue.getFluid(288))
                 .duration(16 * SECONDS).eut(16).addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -3553,7 +3553,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L)).fluidInputs(Materials.Glue.getFluid(288))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L)).fluidInputs(Materials.Glue.getFluid(288))
                 .duration(16 * SECONDS).eut(16).addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -3562,7 +3562,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L)).fluidInputs(Materials.Glue.getFluid(288))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L)).fluidInputs(Materials.Glue.getFluid(288))
                 .duration(16 * SECONDS).eut(16).addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -3571,7 +3571,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3581,7 +3581,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3591,7 +3591,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 
@@ -3601,7 +3601,7 @@ public class AssemblerRecipes implements Runnable {
                         GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 4),
                         GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 4),
                         GTUtility.getIntegratedCircuit(5))
-                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(8L))
+                .itemOutputs(ItemList.Circuit_Parts_Resistor.get(16L))
                 .fluidInputs(FluidRegistry.getFluidStack("glue", 576)).duration(16 * SECONDS).eut(16)
                 .addTo(assemblerRecipes);
 

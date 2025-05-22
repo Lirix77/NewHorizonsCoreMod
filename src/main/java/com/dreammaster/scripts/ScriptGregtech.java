@@ -349,61 +349,6 @@ public class ScriptGregtech implements IScriptLoader {
                 getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
                 null,
                 getModItem(Minecraft.ID, "noteblock", 1, 0, missing));
-        addShapedRecipe(
-                ItemList.BetterJukebox_LV.get(1),
-                ItemList.Electric_Piston_LV.get(1),
-                ItemList.Emitter_LV.get(1),
-                ItemList.Electric_Motor_LV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                ItemList.Hull_LV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tin, 1L),
-                "circuitBasic",
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tin, 1L));
-        addShapedRecipe(
-                ItemList.BetterJukebox_MV.get(1),
-                ItemList.Electric_Piston_MV.get(1),
-                ItemList.Emitter_MV.get(1),
-                ItemList.Electric_Motor_MV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                ItemList.Hull_MV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Copper, 1L),
-                "circuitGood",
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Copper, 1L));
-        addShapedRecipe(
-                ItemList.BetterJukebox_HV.get(1),
-                ItemList.Electric_Piston_HV.get(1),
-                ItemList.Emitter_HV.get(1),
-                ItemList.Electric_Motor_HV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                ItemList.Hull_HV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Gold, 1L),
-                "circuitAdvanced",
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Gold, 1L));
-        addShapedRecipe(
-                ItemList.BetterJukebox_EV.get(1),
-                ItemList.Electric_Piston_EV.get(1),
-                ItemList.Emitter_EV.get(1),
-                ItemList.Electric_Motor_EV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                ItemList.Hull_EV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Aluminium, 1L),
-                "circuitData",
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Aluminium, 1L));
-        addShapedRecipe(
-                ItemList.BetterJukebox_IV.get(1),
-                ItemList.Electric_Piston_IV.get(1),
-                ItemList.Emitter_IV.get(1),
-                ItemList.Electric_Motor_IV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                ItemList.Hull_IV.get(1),
-                getModItem(Minecraft.ID, "noteblock", 1, 0, missing),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tungsten, 1L),
-                "circuitElite",
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.Tungsten, 1L));
         addShapelessRecipe(ItemList.Color_03.get(1L), "dyeBrown");
         addShapelessRecipe(ItemList.Color_07.get(1L), "dyeLightGray");
         addShapelessRecipe(ItemList.Color_11.get(1L), "dyeYellow");

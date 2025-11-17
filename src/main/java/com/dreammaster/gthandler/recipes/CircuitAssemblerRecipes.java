@@ -373,7 +373,7 @@ public class CircuitAssemblerRecipes implements Runnable {
                             ItemList.Circuit_Board_Coated_Basic.get(1),
                             GTUtility.getIntegratedCircuit(1))
                     .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 36))
-                    .fluidInputs(Materials.Lead.getMolten(288)).requiresCleanRoom().duration(10 * SECONDS)
+                    .fluidInputs(Materials.Lead.getMolten(288)).duration(10 * SECONDS)
                     .eut(TierEU.RECIPE_LV).addTo(circuitAssemblerRecipes);
 
             GTValues.RA.stdBuilder()
@@ -384,7 +384,7 @@ public class CircuitAssemblerRecipes implements Runnable {
                             ItemList.Circuit_Board_Coated_Basic.get(1),
                             GTUtility.getIntegratedCircuit(1))
                     .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 36))
-                    .fluidInputs(Materials.Tin.getMolten(144)).requiresCleanRoom().duration(10 * SECONDS)
+                    .fluidInputs(Materials.Tin.getMolten(144)).duration(10 * SECONDS)
                     .eut(TierEU.RECIPE_LV).addTo(circuitAssemblerRecipes);
 
             GTValues.RA.stdBuilder()
@@ -395,7 +395,7 @@ public class CircuitAssemblerRecipes implements Runnable {
                             ItemList.Circuit_Board_Coated_Basic.get(1),
                             GTUtility.getIntegratedCircuit(1))
                     .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 36))
-                    .fluidInputs(Materials.SolderingAlloy.getMolten(72)).requiresCleanRoom().duration(10 * SECONDS)
+                    .fluidInputs(Materials.SolderingAlloy.getMolten(72)).duration(10 * SECONDS)
                     .eut(TierEU.RECIPE_LV).addTo(circuitAssemblerRecipes);
             // 16k ME Storage Component
 

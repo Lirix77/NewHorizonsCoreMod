@@ -158,13 +158,13 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
 
         // Quad Core
         GTValues.RA.stdBuilder()
-                .itemInputs(CraftingUnit, GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.IV), 2))
-                .itemOutputs(CoCraftingUnit4x).duration(5 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
+                .itemInputs(CraftingUnit, GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.HV), 2))
+                .itemOutputs(CoCraftingUnit4x).duration(5 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
 
         // 16 core
         GTValues.RA.stdBuilder()
-                .itemInputs(CraftingUnit, GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.UV), 2))
-                .itemOutputs(CoCraftingUnit16x).duration(5 * SECONDS).eut(TierEU.RECIPE_LuV).addTo(assemblerRecipes);
+                .itemInputs(CraftingUnit, GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.EV), 2))
+                .itemOutputs(CoCraftingUnit16x).duration(5 * SECONDS).eut(TierEU.RECIPE_EV).addTo(assemblerRecipes);
 
         // Advanced Storage Housing
         GTValues.RA.stdBuilder()
@@ -599,15 +599,15 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
 
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "tile.BlockController", 1, 0, missing),
-                "plateTitanium",
-                "circuitAdvanced",
-                "plateTitanium",
+                "plateAluminium",
+                "circuitGood",
+                "plateAluminium",
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 24, missing),
                 getModItem(AppliedEnergistics2.ID, "tile.BlockFluix", 1, 0, missing),
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 24, missing),
-                "plateTitanium",
-                "circuitAdvanced",
-                "plateTitanium");
+                "plateAluminium",
+                "circuitGood",
+                "plateAluminium");
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "tile.BlockEnergyCell", 1, 0, missing),
                 GTOreDictUnificator.get(OrePrefixes.plate, Materials.CertusQuartz, 1L),
@@ -632,7 +632,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 getModItem(AppliedEnergistics2.ID, "tile.BlockEnergyCell", 1, 0, missing));
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "tile.BlockChest", 1, 0, missing),
-                "plateStainlessSteel",
+                "plateAluminium",
                 "circuitGood",
                 "plateAluminium",
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 16, missing),
@@ -743,7 +743,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 "screwAluminium",
                 "plateAluminium",
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 23, missing),
-                "plateTitanium");
+                "plateAluminium");
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "tile.BlockIOPort", 1, 0, missing),
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 16, missing),
@@ -1162,7 +1162,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 28, missing),
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 24, missing),
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 24, missing),
-                ItemList.Automation_TypeFilter_IV.get(1L));
+                ItemList.Automation_TypeFilter_HV.get(1L));
         // wireless booster
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 42, missing),
@@ -1270,7 +1270,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 260, missing),
                 "craftingToolScrewdriver",
-                "plateTitanium",
+                "plateAluminium",
                 "craftingToolHardHammer",
                 "screwCertusQuartz",
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 43, missing),
@@ -1294,7 +1294,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
         addShapedRecipe(
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 240, missing),
                 "craftingToolScrewdriver",
-                "plateTitanium",
+                "plateAluminium",
                 "craftingToolHardHammer",
                 "screwCertusQuartz",
                 getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 44, missing),
@@ -1663,9 +1663,9 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 "craftingToolHardHammer",
                 GTOreDictUnificator.get(OrePrefixes.plate, Materials.CertusQuartz, 1L),
                 "screwCertusQuartz",
-                "plateStainlessSteel",
+                "plateSteel",
                 getModItem(TinkerConstruct.ID, "GlassPane", 1, 0, missing),
-                "plateStainlessSteel",
+                "plateSteel",
                 "screwCertusQuartz",
                 "plateAluminium",
                 "craftingToolScrewdriver");
@@ -1837,25 +1837,25 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                         getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingUnit", 1, 0, missing),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 35, missing))
                 .itemOutputs(getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingStorage", 1, 0, missing))
-                .duration(20 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
+                .duration(20 * SECONDS).eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingUnit", 1, 0, missing),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 36, missing))
                 .itemOutputs(getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingStorage", 1, 1, missing))
-                .duration(20 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
+                .duration(20 * SECONDS).eut(TierEU.RECIPE_LV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingUnit", 1, 0, missing),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 37, missing))
                 .itemOutputs(getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingStorage", 1, 2, missing))
-                .duration(20 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
+                .duration(20 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingUnit", 1, 0, missing),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 38, missing))
                 .itemOutputs(getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingStorage", 1, 3, missing))
-                .duration(20 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
+                .duration(20 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         getModItem(AppliedEnergistics2.ID, "tile.BlockCraftingUnit", 1, 0, missing),
@@ -1938,7 +1938,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 .itemOutputs(storageBus).duration(10 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 1),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Aluminium, 1),
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 44, missing),
                         GTOreDictUnificator.get(OrePrefixes.plate, Materials.NetherQuartz, 2),
@@ -1947,7 +1947,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 .duration(10 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
         GTValues.RA.stdBuilder()
                 .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 1),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Aluminium, 1),
                         GTOreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2),
                         getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 43, missing),
                         GTOreDictUnificator.get(OrePrefixes.plate, Materials.NetherQuartz, 2),

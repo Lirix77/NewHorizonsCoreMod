@@ -1,26 +1,14 @@
 package com.dreammaster.gthandler;
 
 import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.BloodArsenal;
-import static gregtech.api.enums.Mods.Computronics;
 import static gregtech.api.enums.Mods.EnderIO;
 import static gregtech.api.enums.Mods.ExtraUtilities;
-import static gregtech.api.enums.Mods.ForbiddenMagic;
 import static gregtech.api.enums.Mods.GalacticraftCore;
 import static gregtech.api.enums.Mods.GalacticraftMars;
-import static gregtech.api.enums.Mods.GalaxySpace;
 import static gregtech.api.enums.Mods.Gendustry;
-import static gregtech.api.enums.Mods.HardcoreEnderExpansion;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.IronChests;
-import static gregtech.api.enums.Mods.Natura;
-import static gregtech.api.enums.Mods.PamsHarvestCraft;
 import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.StevesCarts2;
-import static gregtech.api.enums.Mods.TaintedMagic;
-import static gregtech.api.enums.Mods.Thaumcraft;
-import static gregtech.api.enums.Mods.ThaumicTinkerer;
 import static gregtech.api.util.GTModHandler.getModItem;
 
 import net.minecraft.init.Blocks;
@@ -41,20 +29,6 @@ public class GT_Loader_OreDictionary extends gregtech.loaders.preload.LoaderGTOr
     @Override
     public void run() {
         GTLog.out.println("Core-Mod: Register OreDict Entries of Non-GT-Items.");
-
-        // Custom Stuff
-        GTOreDictUnificator.registerOre(
-                "ingotBloodInfusedIron",
-                GTModHandler.getModItem(BloodArsenal.ID, "blood_infused_iron", 1L, 0));
-        GTOreDictUnificator.registerOre(
-                "blockBloodInfusedIron",
-                GTModHandler.getModItem(BloodArsenal.ID, "blood_infused_iron_block", 1L, 0));
-
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.log,
-                Materials.Wood,
-                GTModHandler.getModItem(BiomesOPlenty.ID, "logs4", 1L, 3));
-        GTOreDictUnificator.registerOre("cropCarrot", GTModHandler.getModItem(BiomesOPlenty.ID, "food", 1L, 2));
 
         GTOreDictUnificator
                 .registerOre(OrePrefixes.compressed, Materials.Mytryl, ItemList.MytrylCompressedPlate.getIS());
@@ -154,68 +128,9 @@ public class GT_Loader_OreDictionary extends gregtech.loaders.preload.LoaderGTOr
                 Materials.MeteoricIron,
                 GTModHandler.getModItem(GalacticraftCore.ID, "tile.gcBlockCore", 1L, 12));
 
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.ingot,
-                Materials.HeeEndium,
-                GTModHandler.getModItem(HardcoreEnderExpansion.ID, "endium_ingot", 1L, 0));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.HeeEndium,
-                GTModHandler.getModItem(HardcoreEnderExpansion.ID, "endium_block", 1L, 0));
-
-        GTOreDictUnificator
-                .registerOre("oreAdamantium", GTModHandler.getModItem(GalaxySpace.ID, "oberonblocks", 1L, 3));
-        GTOreDictUnificator
-                .registerOre("ingotAdamantium", GTModHandler.getModItem(GalaxySpace.ID, "item.Ingots", 1L, 0));
-        GTOreDictUnificator.registerOre("oreCobalt", GTModHandler.getModItem(GalaxySpace.ID, "phobosblocks", 1L, 4));
-        GTOreDictUnificator.registerOre("ingotCobalt", GTModHandler.getModItem(GalaxySpace.ID, "item.Ingots", 1L, 1));
-
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Lead,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 0));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Adamantium,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 1));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Cobalt,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 2));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Magnesium,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 3));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Mithril,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 4));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Nickel,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 5));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Oriharukon,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 6));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Platinum,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 7));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Tungsten,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 8));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Copper,
-                GTModHandler.getModItem(GalaxySpace.ID, "metalsblock", 1L, 9));
-
         GTOreDictUnificator.registerOre("chestSteel", GTModHandler.getModItem(IronChests.ID, "BlockIronChest", 1L, 4));
 
         GTOreDictUnificator.registerOre("craftingToolShears", new ItemStack(Items.shears, 1, 32767));
-
-        GTOreDictUnificator.registerOre("cropBarley", GTModHandler.getModItem(Natura.ID, "barleyFood", 1L, 0));
 
         GTOreDictUnificator
                 .registerOre("craftingToolShears", GTModHandler.getModItem(ExtraUtilities.ID, "shears", 1L, 32767));
@@ -224,15 +139,8 @@ public class GT_Loader_OreDictionary extends gregtech.loaders.preload.LoaderGTOr
                 Materials.Unstable,
                 GTModHandler.getModItem(ExtraUtilities.ID, "decorativeBlock1", 1L, 5));
 
-        GTOreDictUnificator.registerOre("logWood", GTModHandler.getModItem(ForbiddenMagic.ID, "TaintLog", 1L, 32767));
-        GTOreDictUnificator
-                .registerOre("plankWood", GTModHandler.getModItem(ForbiddenMagic.ID, "TaintPlank", 1L, 32767));
-
         GTOreDictUnificator.registerOre("beeComb", GTModHandler.getModItem(Gendustry.ID, "HoneyComb", 1L));
 
-        GTOreDictUnificator
-                .registerOre("itemBeeswax", GTModHandler.getModItem(PamsHarvestCraft.ID, "beeswaxItem", 1L, 0));
-        GTOreDictUnificator.registerOre("foodFlour", GTModHandler.getModItem(PamsHarvestCraft.ID, "flourItem", 1L, 0));
         GTOreDictUnificator
                 .registerOre("listAllmeatcooked", GTOreDictUnificator.get(OrePrefixes.dust, Materials.MeatCooked, 1L));
         GTOreDictUnificator
@@ -251,66 +159,16 @@ public class GT_Loader_OreDictionary extends gregtech.loaders.preload.LoaderGTOr
         GTOreDictUnificator
                 .registerOre("listAllbeefraw", GTOreDictUnificator.get(OrePrefixes.dust, Materials.MeatRaw, 1L));
         GTOreDictUnificator.registerOre("foodSalt", GTOreDictUnificator.get(OrePrefixes.dust, Materials.Salt, 1L));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Salt,
-                GTModHandler.getModItem(PamsHarvestCraft.ID, "spamcompressedsaltBlockalt", 1L, 0));
-
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.dust,
-                Materials.Wheat,
-                GTModHandler.getModItem(PamsHarvestCraft.ID, "flourItem", 1L, 0));
-
-        GTOreDictUnificator
-                .registerOre("beeComp", GTModHandler.getModItem(Computronics.ID, "computronics.partsForestry", 1L, 0));
 
         GTOreDictUnificator
                 .registerOre("craftingToolShears", GTModHandler.getModItem(Railcraft.ID, "tool.steel.shears", 1L, 0));
 
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Reinforced,
-                GTModHandler.getModItem(StevesCarts2.ID, "BlockMetalStorage", 1L, 0));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Galgadorian,
-                GTModHandler.getModItem(StevesCarts2.ID, "BlockMetalStorage", 1L, 1));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.EnhancedGalgadorian,
-                GTModHandler.getModItem(StevesCarts2.ID, "BlockMetalStorage", 1L, 2));
 
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.nugget,
-                Materials.Void,
-                GTModHandler.getModItem(Thaumcraft.ID, "ItemNugget", 1L, 7));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Amber,
-                GTModHandler.getModItem(Thaumcraft.ID, "blockCosmeticOpaque", 1L, 0));
 
         GTOreDictUnificator.registerOre(
                 OrePrefixes.ingot,
                 Materials.Bedrockium,
                 GTModHandler.getModItem(ExtraUtilities.ID, "bedrockiumIngot", 1L, 0));
-
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.block,
-                Materials.Shadow,
-                GTModHandler.getModItem(TaintedMagic.ID, "BlockShadowmetal", 1L, 0));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.ingot,
-                Materials.Shadow,
-                GTModHandler.getModItem(TaintedMagic.ID, "ItemMaterial", 1L, 0));
-
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.ingot,
-                Materials.Ichorium,
-                GTModHandler.getModItem(ThaumicTinkerer.ID, "kamiResource", 1L, 2));
-        GTOreDictUnificator.registerOre(
-                OrePrefixes.nugget,
-                Materials.Ichorium,
-                GTModHandler.getModItem(ThaumicTinkerer.ID, "kamiResource", 1L, 3));
 
         GTOreDictUnificator.registerOre("dyeLime", GTOreDictUnificator.get(OrePrefixes.dust, Materials.Soapstone, 1L));
 

@@ -45,11 +45,6 @@ public class BrewingMachineRecipes implements Runnable {
                 .fluidOutputs(FluidRegistry.getFluidStack("binnie.bacteriapoly", 100)).duration(5 * TICKS).eut(60)
                 .addTo(brewingRecipes);
 
-        GTValues.RA.stdBuilder().itemInputs(GTModHandler.getModItem(PamsHarvestTheNether.ID, "ignisfruitItem", 45L, 0))
-                .fluidInputs(FluidRegistry.getFluidStack("potion.awkward", 750))
-                .fluidOutputs(FluidRegistry.getFluidStack("potion.fireresistance", 750)).duration(6 * SECONDS).eut(8)
-                .addTo(brewingRecipes);
-
         // Add fermenter recipes from forestry into gregtech
         if (Forestry.isModLoaded()) {
             try {

@@ -134,7 +134,6 @@ public class ScriptAE2FC implements IScriptLoader {
         final ItemStack AE2FC_TERMINAL_PRO = getModItem(AE2FluidCraft.ID, "part_fluid_pattern_terminal_ex", 1, 0);
         final ItemStack AE2FC_EXPORTBUS = getModItem(AE2FluidCraft.ID, "part_fluid_export", 1, 0);
         final ItemStack AE2FC_IMPORTBUS = getModItem(AE2FluidCraft.ID, "part_fluid_import", 1, 0);
-        final ItemStack AE2FC_OCEDITOR = getModItem(AE2FluidCraft.ID, "oc_pattern_editor", 1, 0);
         final ItemStack AE2FC_MAINTAIN = getModItem(AE2FluidCraft.ID, "level_maintainer", 1, 0);
         final ItemStack AE2FC_FLUID_TERMINAL = getModItem(AE2FluidCraft.ID, "part_fluid_terminal", 1, 0);
         final ItemStack AE2FC_FLUID_BUFFER = getModItem(AE2FluidCraft.ID, "fluid_buffer", 1, 0);
@@ -143,8 +142,7 @@ public class ScriptAE2FC implements IScriptLoader {
         final ItemStack AE2FC_LEVEL_TERMINAL = getModItem(AE2FluidCraft.ID, "part_level_terminal", 1, 0);
         final ItemStack AE2FC_LEVEL_MAIN = getModItem(AE2FluidCraft.ID, "part_fluid_level_emitter", 1, 0);
         final ItemStack AE2FC_PORTABLE_CELL = getModItem(AE2FluidCraft.ID, "portable_fluid_cell", 1, 0);
-        final ItemStack AE2FC_TANK = getModItem(AE2FluidCraft.ID, "certus_quartz_tank", 1, 0);
-        final ItemStack AE2FC_WALRUS = getModItem(AE2FluidCraft.ID, "walrus", 1, 0);
+        final ItemStack AE2FC_TANK = GregtechItemList.GTFluidTank_ULV.get(1);
         final ItemStack AE2FC_MON = getModItem(AE2FluidCraft.ID, "part_fluid_storage_monitor", 1, 0);
         final ItemStack AE2FC_CON = getModItem(AE2FluidCraft.ID, "part_fluid_conversion_monitor", 1, 0);
         final ItemStack AE2FC_FLUID_WIRELESS = getModItem(AE2FluidCraft.ID, "wireless_fluid_terminal", 1, 0);
@@ -153,18 +151,12 @@ public class ScriptAE2FC implements IScriptLoader {
         final ItemStack AE2FC_LEVEL_WIRELESS = getModItem(AE2FluidCraft.ID, "wireless_level_terminal", 1, 0);
         final ItemStack AE2FC_QUANTUM_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.quantum", 1, 0);
         final ItemStack AE2FC_SINGULARITY_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.singularity", 1, 0);
-        final ItemStack AE2FC_FLUID_VOID_CELL = getModItem(AE2FluidCraft.ID, "fluid_storage.void", 1, 0);
         final ItemStack AE2_SINGULARITY = getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 47);
         final ItemStack AE2FC_FLUID_STORAGE_HOUSING = getModItem(AE2FluidCraft.ID, "fluid_storage_housing", 1, 0);
         final ItemStack AE2_P2P_ME = getModItem(AppliedEnergistics2.ID, "item.ItemMultiPart", 1, 460);
         final ItemStack AE2FC_INTERFACE_P2P = getModItem(AE2FluidCraft.ID, "part_fluid_p2p_interface", 1);
         final ItemStack AE2_ADVANCED_HOUSING = getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1, 61);
         final ItemStack T7_YOT = new ItemStack(Loaders.yottaFluidTankCell, 1, 6);
-        final ItemStack AE2FC_INFINITY_WATER_STORAGE_CELL = getModItem(
-                AE2FluidCraft.ID,
-                "fluid_storage.infinity.water",
-                1,
-                0);
         final ItemStack AE2FC_ADVANCED_FLUID_STORAGE_HOUSING = getModItem(
                 AE2FluidCraft.ID,
                 "fluid_storage_housing",
@@ -199,7 +191,6 @@ public class ScriptAE2FC implements IScriptLoader {
                 RecipeBits.BUFFERED,
                 new Object[] { "dCW", "S-S", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
                         "plateStainlessSteel", 'A', "plateAluminium" });
-        // AE2FC_MULTI_FLUID_STORAGE_HOUSING
         for (Map.Entry<ItemStack, ItemStack> entry : new HashMap<ItemStack, ItemStack>() {
 
             {
@@ -213,12 +204,12 @@ public class ScriptAE2FC implements IScriptLoader {
                     entry.getKey(),
                     RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
                     new Object[] { "hCW", "SKS", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            "plateTungstenSteel", 'A', "plateStainlessSteel", 'K', entry.getValue() });
+                            "plateStainlessSteel", 'A', "plateAluminium", 'K', entry.getValue() });
             GTModHandler.addCraftingRecipe(
                     entry.getKey(),
                     RecipeBits.BUFFERED,
                     new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            "plateTungstenSteel", 'A', "plateStainlessSteel", 'K', entry.getValue() });
+                            "plateStainlessSteel", 'A', "plateAluminium", 'K', entry.getValue() });
             addShapelessRecipe(entry.getKey(), AE2FC_FLUID_STORAGE_HOUSING, entry.getValue());
         }
 
@@ -247,12 +238,12 @@ public class ScriptAE2FC implements IScriptLoader {
                     entry.getKey(),
                     RecipeBits.BUFFERED | RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES,
                     new Object[] { "hCW", "SKS", "WAd", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            zeronPlate, 'A', "plateTungstenSteel", 'K', entry.getValue() });
+                            nitinolPlate, 'A', "plateStainlessSteel", 'K', entry.getValue() });
             GTModHandler.addCraftingRecipe(
                     entry.getKey(),
                     RecipeBits.BUFFERED,
                     new Object[] { "dCW", "SKS", "WAh", 'C', "plateCertusQuartz", 'W', "screwCertusQuartz", 'S',
-                            zeronPlate, 'A', "plateTungstenSteel", 'K', entry.getValue() });
+                            nitinolPlate, 'A', "plateStainlessSteel", 'K', entry.getValue() });
             addShapelessRecipe(entry.getKey(), AE2FC_ADVANCED_FLUID_STORAGE_HOUSING, entry.getValue());
         }
 
@@ -677,7 +668,7 @@ public class ScriptAE2FC implements IScriptLoader {
                 BUCKET,
                 IRON_PLATE,
                 AE2_STORAGE_BUS,
-                ItemList.Electric_Pump_EV.get(1),
+                ItemList.Electric_Pump_HV.get(1),
                 AE2_STORAGE_BUS,
                 IRON_PLATE,
                 AE2_PROCESS_ENG,
@@ -879,17 +870,6 @@ public class ScriptAE2FC implements IScriptLoader {
         // Wireless Level Terminal
         GTValues.RA.stdBuilder().itemInputs(AE2_ITEM_WIRELESS, AE2FC_LEVEL_TERMINAL).itemOutputs(AE2FC_LEVEL_WIRELESS)
                 .duration(30 * SECONDS).eut(TierEU.RECIPE_MV).addTo(assemblerRecipes);
-
-        // DEFECTIVE SINGULARITY CELL
-        GTValues.RA.stdBuilder()
-                .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2L),
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.CertusQuartz, 1L),
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2L),
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 1L),
-                        AE2_SINGULARITY,
-                        GTUtility.getIntegratedCircuit(2))
-                .itemOutputs(AE2FC_FLUID_VOID_CELL).duration(5 * SECONDS).eut(TierEU.RECIPE_HV).addTo(assemblerRecipes);
 
         // Interface from Small to Block and opposite
         GameRegistry.addShapelessRecipe(AE2FC_INTERFACE_SMALL, AE2FC_INTERFACE);

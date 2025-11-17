@@ -51,21 +51,18 @@ public class FluidCannerRecipes implements Runnable {
                 .itemOutputs(ItemList.Reactor_Coolant_Sp_6.get(1L)).fluidInputs(Materials.SuperCoolant.getFluid(6000L))
                 .duration(4 * SECONDS + 16 * TICKS).eut(1).addTo(fluidCannerRecipes);
 
-        if (GalaxySpace.isModLoaded()) {
-            GTValues.RA.stdBuilder().itemInputs(CustomItemList.TenKCell.get(1L))
-                    .itemOutputs(ItemList.Reactor_Coolant_He_1.get(1L))
-                    .fluidInputs(Materials.Helium.getGas(1000)).duration(16 * TICKS)
-                    .eut(1).addTo(fluidCannerRecipes);
+        GTValues.RA.stdBuilder().itemInputs(CustomItemList.TenKCell.get(1L))
+                .itemOutputs(ItemList.Reactor_Coolant_He_1.get(1L))
+                .fluidInputs(Materials.Helium.getGas(1000)).duration(16 * TICKS)
+                .eut(1).addTo(fluidCannerRecipes);
 
-            GTValues.RA.stdBuilder().itemInputs(CustomItemList.ThirtyKCell.get(1L))
-                    .itemOutputs(ItemList.Reactor_Coolant_He_3.get(1L))
-                    .fluidInputs(Materials.Helium.getGas(3000))
-                    .duration(2 * SECONDS + 8 * TICKS).eut(1).addTo(fluidCannerRecipes);
-
-            GTValues.RA.stdBuilder().itemInputs(CustomItemList.SixtyKCell.get(1L))
-                    .itemOutputs(ItemList.Reactor_Coolant_He_6.get(1L))
-                    .fluidInputs(Materials.Helium.getGas(6000))
-                    .duration(4 * SECONDS + 16 * TICKS).eut(1).addTo(fluidCannerRecipes);
-        }
+        GTValues.RA.stdBuilder().itemInputs(CustomItemList.ThirtyKCell.get(1L))
+                .itemOutputs(ItemList.Reactor_Coolant_He_3.get(1L))
+                .fluidInputs(Materials.Helium.getGas(3000))
+                .duration(2 * SECONDS + 8 * TICKS).eut(1).addTo(fluidCannerRecipes);
+        GTValues.RA.stdBuilder().itemInputs(CustomItemList.SixtyKCell.get(1L))
+                .itemOutputs(ItemList.Reactor_Coolant_He_6.get(1L))
+                .fluidInputs(Materials.Helium.getGas(6000))
+                .duration(4 * SECONDS + 16 * TICKS).eut(1).addTo(fluidCannerRecipes);
     }
 }

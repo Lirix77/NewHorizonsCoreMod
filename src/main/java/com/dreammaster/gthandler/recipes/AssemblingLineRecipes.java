@@ -195,29 +195,6 @@ public class AssemblingLineRecipes implements Runnable {
                 .itemOutputs(ItemList.Hatch_Input_Bus_ME_Advanced.get(1L)).eut(TierEU.RECIPE_LuV).duration(15 * SECONDS)
                 .addTo(AssemblyLine);
 
-        TTRecipeAdder.addResearchableAssemblylineRecipe(
-                ItemList.Hatch_CraftingInput_Bus_ME_ItemOnly.get(1L),
-                2000 * 60 * 8,
-                2000,
-                3000000,
-                2,
-                new ItemStack[] { ItemList.Hatch_Input_Bus_ME.get(1L), ItemList.Hatch_Input_Multi_2x2_UEV.get(1L),
-                        // 16384k storage component
-                        GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 8, 60),
-                        // 16384k fluid storage component
-                        GTModHandler.getModItem(AE2FluidCraft.ID, "fluid_part", 8, 7),
-                        // ME Controller
-                        GTModHandler.getModItem(AppliedEnergistics2.ID, "tile.BlockController", 1, WILDCARD),
-                        // Dual Interface
-                        GTModHandler.getModItem(AE2FluidCraft.ID, "part_fluid_interface", 1, WILDCARD),
-                        // Pattern capacity card
-                        GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 3, 54) },
-                new FluidStack[] { FluidRegistry.getFluidStack("molten.spacetime", 16 * INGOTS),
-                        FluidRegistry.getFluidStack("molten.mutatedlivingsolder", 2000), },
-                ItemList.Hatch_CraftingInput_Bus_ME.get(1L),
-                30 * SECONDS,
-                (int) TierEU.RECIPE_UIV);
-
         // Cloud Computation Client Hatch
         TTRecipeAdder.addResearchableAssemblylineRecipe(
                 dataIn_Hatch.get(1),
@@ -232,8 +209,6 @@ public class AssemblingLineRecipes implements Runnable {
                         Machine_Multi_Switch.get(1),
                         // Data pipe
                         DATApipe.get(64),
-                        // Internet card
-                        GTModHandler.getModItem(OpenComputers.ID, "item", 1L, 44),
                         // Dense infinity plate
                         GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Infinity, 64),
                         // Shirabon foil
@@ -263,8 +238,6 @@ public class AssemblingLineRecipes implements Runnable {
                         Machine_Multi_Switch.get(1),
                         // Data pipe
                         DATApipe.get(64),
-                        // Internet card
-                        GTModHandler.getModItem(OpenComputers.ID, "item", 1L, 44),
                         // Dense infinity plate
                         GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Infinity, 64),
                         // Shirabon foil
@@ -294,8 +267,6 @@ public class AssemblingLineRecipes implements Runnable {
                         Machine_Multi_DataBank.get(1),
                         // Data pipe
                         DATApipe.get(64),
-                        // Internet card
-                        GTModHandler.getModItem(OpenComputers.ID, "item", 1L, 44),
                         // Superdense neutronium plate
                         GTOreDictUnificator.get(OrePrefixes.plateSuperdense, Materials.Neutronium, 4),
                         // infinity foil
@@ -325,8 +296,6 @@ public class AssemblingLineRecipes implements Runnable {
                         Machine_Multi_DataBank.get(1),
                         // Data pipe
                         DATApipe.get(64),
-                        // Internet card
-                        GTModHandler.getModItem(OpenComputers.ID, "item", 1L, 44),
                         // Superdense neutronium plate
                         GTOreDictUnificator.get(OrePrefixes.plateSuperdense, Materials.Neutronium, 4),
                         // infinity foil
@@ -987,7 +956,7 @@ public class AssemblingLineRecipes implements Runnable {
                         // Pattern capacity card
                         GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 3, 54))
                 .fluidInputs(new FluidStack(solderIndalloy, 1152))
-                .itemOutputs(ItemList.Hatch_CraftingInput_Bus_ME_ItemOnly.get(1L)).eut(TierEU.RECIPE_LuV)
+                .itemOutputs(ItemList.Hatch_CraftingInput_Bus_ME.get(1L)).eut(TierEU.RECIPE_LuV)
                 .duration(30 * SECONDS).addTo(AssemblyLine);
 
         if (GraviSuite.isModLoaded()) {

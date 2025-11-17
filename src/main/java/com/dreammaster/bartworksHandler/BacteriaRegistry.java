@@ -412,11 +412,6 @@ public class BacteriaRegistry {
     }
 
     private void bioLabRecipes() {
-        GTValues.RA.stdBuilder()
-                .itemInputs(BioItemList.getPetriDish(null), GTModHandler.getModItem(GalaxySpace.ID, "barnardaClog", 1L))
-                .itemOutputs(BioItemList.getPetriDish(CultureSet.get("BarnadaCBac"))).outputChances(2_50)
-                .fluidInputs(FluidRegistry.getFluidStack("unknowwater", 8000)).duration(25 * SECONDS)
-                .eut(TierEU.RECIPE_UV).addTo(bioLabRecipes);
 
         for (int i = 0; i < OreDictionary.getOres("cropTcetiESeaweed").size(); i++) {
             GTValues.RA.stdBuilder()
